@@ -10,7 +10,7 @@
     "description": "{{appDescription}}",
     "i18n": "i18n/i18n.properties",
     "dataSources": {
-      "CatalogService": {
+      "AdminService": {
         "uri": "odata/v4/catalog/",
         "type": "OData",
         "settings": {
@@ -24,9 +24,6 @@
           "signature": {
             "parameters": {
               "Musican.ID": {
-                "renameTo": "ID"
-              },
-              "Authors.books.ID": {
                 "renameTo": "ID"
               }
             },
@@ -60,7 +57,7 @@
     "dependencies": {
       "minUI5Version": "1.140.0",
       "libs": {
-        "sap.fe": {}
+        "sap.fe.templates": {}
       }
     },
     "models": {
@@ -71,6 +68,7 @@
       "": {
         "dataSource": "AdminService",
         "settings": {
+         "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
           "earlyRequests": true,

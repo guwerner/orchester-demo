@@ -10,4 +10,7 @@ service AdminService @(
       action approve();
       action rejection();
     };
+  entity Band         as projection on db.Band;  
+  entity Concert      as projection on db.Concert;
+  entity InstrumentType as projection on db.InstrumentType;
 }

@@ -13,7 +13,7 @@
               "isGroupLocked": false,
               "tiles": [
                 {
-                  "id": "NamageMusican",
+                  "id": "ManageMusican",
                   "tileType": "sap.ushell.ui.tile.StaticTile",
                   "properties": {
                     "title": "Manage Musican",

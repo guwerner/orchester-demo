@@ -1,5 +1,35 @@
 using AdminService from '../../srv/admin-service';
 
+
+////////////////////////////////////////////////////////////////////////////
+//
+//	Books List Page
+//
+annotate AdminService.Musican with @(UI: {
+  SelectionFields: [
+    cuid,
+    prename,
+    lastname,
+	instrument
+
+  ],
+  LineItem       : [
+    {
+      Value: cuid,
+      Label: '{i18n>Title}'
+    },
+    {
+      Value: prename,
+      Label: '{i18n>LastName}'
+    },
+    {Value: band.bandName},
+    {Value: birthdate},
+    
+  ]
+});
+
+
+
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Books Object Page
@@ -13,7 +43,6 @@ annotate AdminService.Musican with @(
 		],
 		FieldGroup#General: {
 			Data: [
-				{Value: ID},
 				{Value: name},
 				{Value: prename},
 				{Value: birthdate},
