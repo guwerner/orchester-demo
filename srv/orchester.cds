@@ -1,10 +1,10 @@
 
-using orchester from '../db/orchester';
+using {orchester as db} from '../db/schema.cds';
 
 service OrchesterService {
-    entity Musican as projection on orchester.Musican;
-    entity Band  as projection on orchester.Band;
-    entity Concert as projection on orchester.Concert;
-    entity InstrumentType as projection on orchester.InstrumentType;
+    entity Musican as projection on db.Musican;
+    entity Band  as projection on db.Band;
+    entity Concert as projection on db.Concert;
+    entity InstrumentType as projection on db.InstrumentType;
 }
 

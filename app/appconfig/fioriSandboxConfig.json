@@ -1,0 +1,75 @@
+{
+  "services": {
+    "LaunchPage": {
+      "adapter": {
+        "config": {
+          "catalogs": [],
+          "groups": [
+            {
+              "id": "Orchester",
+              "title": "Orchester",
+              "isPreset": true,
+              "isVisible": true,
+              "isGroupLocked": false,
+              "tiles": [
+                {
+                  "id": "NamageMusican",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Manage Musican",
+                    "targetURL": "#Musican-manage"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Administration",
+              "title": "Administration",
+              "isPreset": true,
+              "isVisible": true,
+              "isGroupLocked": false,
+              "tiles": [
+                {
+                  "id": "ManageMusicanAdmin",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Manage Musican",
+                    "targetURL": "#Musican-manage"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "NavTargetResolution": {
+      "config": {
+        "enableClientSideTargetResolution": true
+      }
+    },
+    "ClientSideTargetResolution": {
+      "adapter": {
+        "config": {
+          "inbounds": {
+          
+            "ManageMusican": {
+              "semanticObject": "Musican",
+              "action": "manage",
+              "title": "Manage Musican",
+              "signature": {
+                "parameters": {},
+                "additionalParameters": "allowed"
+              },
+              "resolutionResult": {
+                "applicationType": "SAPUI5",
+                "additionalInformation": "SAPUI5.Component=admin",
+                "url": "admin/webapp"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
