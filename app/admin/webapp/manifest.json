@@ -103,7 +103,7 @@
               "entitySet": "Musican",
               "initialLoad": true,
               "navigation": {
-                "Books": {
+                "Musican": {
                   "detail": {
                     "route": "MusicanDetails"
                   }

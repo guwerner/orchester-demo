@@ -8,9 +8,15 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.0.4"
+    "@cap-js/sqlite": "^2.0.4",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5"
   },
   "scripts": {
+    "test:watch": "jest --watch",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "start": "cds-serve"
   },
   "private": true
