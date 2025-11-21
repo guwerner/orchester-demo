@@ -51,11 +51,21 @@ annotate AdminService.Musican with @(UI: {
             Label : '{i18n>Details}',
             Target: '@UI.FieldGroup#Details'
         },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : '{i18n>Admin}',
+            Target: '@UI.FieldGroup#Admin'
+        }
     ],
     FieldGroup #General: {Data: [
         {Value: name},
         {Value: prename},
         {Value: birthdate},
     ]},
-    FieldGroup #Details: {Data: [{Value: band_ID}]}
+    FieldGroup #Details: {Data: [{Value: band.name}]},
+    FieldGroup #Admin  : {Data: [
+        {Value: createdAt},
+        {Value: createdBy}
+    ]}
+
 });
