@@ -6,7 +6,7 @@
           "catalogs": [],
           "groups": [
             {
-              "id": "Orchester",
+              "id": "Orchetster",
               "title": "Orchester",
               "isPreset": true,
               "isVisible": true,
@@ -36,6 +36,22 @@
                     "title": "Manage Musican",
                     "targetURL": "#Musican-manage"
                   }
+                },
+                {
+                  "id": "ManageBandAdmin",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Manage Band",
+                    "targetURL": "#Band-manage"
+                  }
+                },
+                {
+                  "id": "ManageInstrumentAdmin",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Manage Instrument Type",
+                    "targetURL": "#Instrument-manage"
+                  }
                 }
               ]
             }
@@ -52,7 +68,6 @@
       "adapter": {
         "config": {
           "inbounds": {
-          
             "ManageMusican": {
               "semanticObject": "Musican",
               "action": "manage",
@@ -65,6 +80,34 @@
                 "applicationType": "SAPUI5",
                 "additionalInformation": "SAPUI5.Component=admin",
                 "url": "admin/webapp"
+              }
+            },
+            "ManageBand": {
+              "semanticObject": "Band",
+              "action": "manage",
+              "title": "Manage Band",
+              "signature": {
+                "parameters": {},
+                "additionalParameters": "allowed"
+              },
+              "resolutionResult": {
+                "applicationType": "SAPUI5",
+                "additionalInformation": "SAPUI5.Component=band",
+                "url": "band/webapp"
+              }
+            },
+            "ManageInstrument": {
+              "semanticObject": "Instrument",
+              "action": "manage",
+              "title": "Manage Instrument Type",
+              "signature": {
+                "parameters": {},
+                "additionalParameters": "allowed"
+              },
+              "resolutionResult": {
+                "applicationType": "SAPUI5",
+                "additionalInformation": "SAPUI5.Component=instrument",
+                "url": "instrument/webapp"
               }
             }
           }

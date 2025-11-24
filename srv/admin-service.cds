@@ -4,6 +4,7 @@ using {sap} from '@sap/cds/common';
 service AdminService @(
   impl    : './admin-service.js',
 ) {
+
   entity Musican        as projection on db.Musican;
   entity Band           as projection on db.Band;  
   entity Concert        as projection on db.Concert;

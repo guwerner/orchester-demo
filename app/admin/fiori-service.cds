@@ -1,11 +1,13 @@
 using AdminService from '../../srv/admin-service';
 
 
+
 ////////////////////////////////////////////////////////////////////////////
 //
-//	Books List Page
+//	Musican List Page
 //
 annotate AdminService.Musican with @(UI: {
+    
     SelectionFields: [
         prename,
         name,
@@ -13,6 +15,12 @@ annotate AdminService.Musican with @(UI: {
 
     ],
     LineItem       : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Label : '{i18n>CreateMusican}',
+            Action: 'AdminService.CreateMusican',
+            InvocationGrouping: 'ChangeSet'
+        },
         {
             Value: name,
             Label: '{i18n>LastName}'
@@ -22,7 +30,7 @@ annotate AdminService.Musican with @(UI: {
             Label: '{i18n>FirstName}'
         },
         {
-            Value: band.name,
+            Value: band.bandName,
             Label: '{i18n>Band}'
         },
         {
@@ -37,7 +45,7 @@ annotate AdminService.Musican with @(UI: {
 
 ////////////////////////////////////////////////////////////////////////////
 //
-//	Books Object Page
+//	Musican Object Page
 //
 annotate AdminService.Musican with @(UI: {
     Facets             : [
@@ -62,7 +70,7 @@ annotate AdminService.Musican with @(UI: {
         {Value: prename},
         {Value: birthdate},
     ]},
-    FieldGroup #Details: {Data: [{Value: band.name}]},
+    FieldGroup #Details: {Data: [{Value: band.bandName}]},
     FieldGroup #Admin  : {Data: [
         {Value: createdAt},
         {Value: createdBy}

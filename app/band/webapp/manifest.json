@@ -1,7 +1,7 @@
 {
   "_version": "1.49.0",
   "sap.app": {
-    "id": "admin",
+    "id": "band",
     "applicationVersion": {
       "version": "1.0.0"
     },
@@ -20,16 +20,16 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "Musican-manage": {
+        "Band-manage": {
           "signature": {
             "parameters": {
-              "Musican.ID": {
+              "Band.ID": {
                 "renameTo": "ID"
               }
             },
             "additionalParameters": "allowed"
           },
-          "semanticObject": "Musican",
+          "semanticObject": "Band",
           "action": "display",
           "title": "{{appTitle}}",
           "info": "{{appInfo}}",
@@ -37,7 +37,7 @@
           "icon": "sap-icon://course-book",
           "indicatorDataSource": {
             "dataSource": "AdminService",
-            "path": "Musican/$count",
+            "path": "Band/$count",
             "refresh": 1800
           }
         }
@@ -84,41 +84,41 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "MusicanList",
-          "target": "MusicanList"
+          "name": "BandList",
+          "target": "BandList"
         },
         {
-          "pattern": "Musican({key}):?query:",
-          "name": "MusicanDetails",
-          "target": "MusicanDetails"
+          "pattern": "Band({key}):?query:",
+          "name": "BandDetails",
+          "target": "BandDetails"
         }
       ],
       "targets": {
-        "MusicanList": {
+        "BandList": {
           "type": "Component",
-          "id": "MusicanList",
+          "id": "BandList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "entitySet": "Musican",
+              "entitySet": "Band",
               "initialLoad": true,
               "navigation": {
-                "Musican": {
+                "Band": {
                   "detail": {
-                    "route": "MusicanDetails"
+                    "route": "BandDetails"
                   }
                 }
               }
             }
           }
         },
-        "MusicanDetails": {
+        "BandDetails": {
           "type": "Component",
-          "id": "MusicanDetailsList",
+          "id": "BandDetails",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Musican"
+              "entitySet": "Band"
             }
           }
         }

@@ -1,4 +1,4 @@
-ID,name,genre,foundedIn
-band-1,The Orchestrators,Classical,2005-01-01
-band-2,The Syncopators,Jazz,2012-06-15
-band-3,Electric Aurora,Rock,2018-09-01
+ID,bandName,genre,foundedIn
+6aba46a4-4b79-4919-8998-f4463e82a141,The Orchestrators,Classical,2005-01-01
+2aba46a4-4b79-4919-8998-f4463e82a144,The Syncopators,Jazz,2012-06-15
+8aba46a4-4b79-4919-8998-f4463e82b141,Electric Aurora,Rock,2018-09-01

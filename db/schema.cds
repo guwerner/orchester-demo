@@ -15,7 +15,7 @@ entity Musican : cuid, managed {
 };
 
 entity Band : cuid, managed {
-    name      : String(100);
+    bandName  : String(100);
     genre     : String(100);
     foundedIn : Date;
     musicians : Composition of many Musican
