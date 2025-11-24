@@ -8,6 +8,10 @@ using AdminService from '../../srv/admin-service';
 //
 annotate AdminService.Musican with @(UI: {
     
+    Identification  : [
+        { $Type  : 'UI.DataFieldForAction', Action : 'AdminService.changeStatus',   Label  : '{i18n>ChangeStatus}'   }
+    ],
+
     SelectionFields: [
         prename,
         name,
@@ -15,11 +19,7 @@ annotate AdminService.Musican with @(UI: {
 
     ],
     LineItem       : [
-        {
-            $Type : 'UI.DataFieldForAction',
-            Label : '{i18n>CreateMusican}',
-            Action: 'AdminService.CreateMusican',
-            InvocationGrouping: 'ChangeSet'
+        { $Type  : 'UI.DataFieldForAction', Action : 'AdminService.changeStatus',   Label  : '{i18n>ChangeStatus}'   
         },
         {
             Value: name,
@@ -34,9 +34,14 @@ annotate AdminService.Musican with @(UI: {
             Label: '{i18n>Band}'
         },
         {
+            Value: status,
+            Label: '{i18n>Status}'
+        },
+        {
             Value: birthdate,
             Label: '{i18n>Birthdate}'
         }
+        
 
 
     ]
@@ -69,6 +74,7 @@ annotate AdminService.Musican with @(UI: {
         {Value: name},
         {Value: prename},
         {Value: birthdate},
+        {Value: status}
     ]},
     FieldGroup #Details: {Data: [{Value: band.bandName}]},
     FieldGroup #Admin  : {Data: [

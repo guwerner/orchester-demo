@@ -92,6 +92,12 @@
           "name": "MusicanDetails",
           "target": "MusicanDetails"
         }
+        ,
+        {
+          "pattern": "Musican/create:?query:",
+          "name": "MusicanCreate",
+          "target": "MusicanCreate"
+        }
       ],
       "targets": {
         "MusicanList": {
@@ -116,6 +122,17 @@
           "type": "Component",
           "id": "MusicanDetailsList",
           "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Musican"
+            }
+          }
+        }
+        ,
+        "MusicanCreate": {
+          "type": "Component",
+          "id": "MusicanCreate",
+          "name": "sap-fe.templates.ObjectPage",
           "options": {
             "settings": {
               "entitySet": "Musican"
