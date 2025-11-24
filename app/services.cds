@@ -3,3 +3,4 @@
 */
 using from './admin/fiori-service';
 using from './band/fiori-service';
+using from './layout';

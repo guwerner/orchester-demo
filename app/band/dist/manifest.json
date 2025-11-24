@@ -1,0 +1,213 @@
+{
+	"_version": "1.49.0",
+	"sap.app": {
+		"id": "band",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"type": "application",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				"de",
+				"en"
+			]
+		},
+		"dataSources": {
+			"AdminService": {
+				"uri": "odata/v4/admin/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"Band-manage": {
+					"signature": {
+						"parameters": {
+							"Band.ID": {
+								"renameTo": "ID"
+							}
+						},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "Band",
+					"action": "display",
+					"title": "{{appTitle}}",
+					"info": "{{appInfo}}",
+					"subTitle": "{{appSubTitle}}",
+					"icon": "sap-icon://course-book",
+					"indicatorDataSource": {
+						"dataSource": "AdminService",
+						"path": "Band/$count",
+						"refresh": 1800
+					}
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"fullWidth": false,
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.140.0",
+			"libs": {
+				"sap.fe.templates": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"supportedLocales": [
+						"de",
+						"en"
+					]
+				}
+			},
+			"": {
+				"dataSource": "AdminService",
+				"settings": {
+					"synchronizationMode": "None",
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true,
+					"groupProperties": {
+						"default": {
+							"submit": "Auto"
+						}
+					}
+				}
+			}
+		},
+		"routing": {
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "BandList",
+					"target": "BandList"
+				},
+				{
+					"pattern": "Band({key}):?query:",
+					"name": "BandDetails",
+					"target": "BandDetails"
+				},
+				{
+					"pattern": "Band({key])/band({key2}):?query:",
+					"name": "MusicanObjectPage",
+					"target": "MusicanObjectPage"
+				}
+			],
+			"targets": {
+				"BandList": {
+					"type": "Component",
+					"id": "BandList",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"entitySet": "Band",
+							"initialLoad": true,
+							"navigation": {
+								"Band": {
+									"detail": {
+										"route": "BandDetails"
+									}
+								}
+							}
+						}
+					}
+				},
+				"BandDetails": {
+					"type": "Component",
+					"id": "BandDetails",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "Band",
+							"navigation": {
+								"band": {
+									"detail": {
+										"route": "MusicanObjectPage"
+									}
+								}
+							},
+							"controlConfiguration": {
+								"band/@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "ResponsiveTable",
+										"personalization": {
+											"column": true,
+											"sort": false
+										},
+										"creationMode": {
+											"name": "Inline",
+											"createAtEnd": true
+										}
+									}
+								}
+							},
+							"editableHeaderContent": false,
+							"content": {
+								"body": {
+									"sections": {
+										"CustomSection": {
+											"template": "band/ext.fragment.CustomSection",
+											"position": {
+												"placement": "After",
+												"anchor": "Musicans"
+											},
+											"title": "Musicans in the Band"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"MusicanObjectPage": {
+					"type": "Component",
+					"id": "MusicanObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "Musican",
+							"editableHeaderContent": false
+						}
+					}
+				}
+			},
+			"config": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.fe.templates.ObjectPage.ObjectPageController": {
+						"controllerName": "ext.controller.ObjectPageExtension"
+					}
+				}
+			}
+		},
+		"flexBundle": false
+	},
+	"sap.fiori": {
+		"_version": "1.1.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	}
+}

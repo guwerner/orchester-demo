@@ -4,20 +4,93 @@
   "description": "A simple CAP project.",
   "dependencies": {
     "@sap/cds": "^9",
+    "@sap/cds-dk": "^9.4.3",
+    "@sap/ux-ui5-tooling": "^1.19.5",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@ui5/cli": "^4.0.36",
+    "axios": "^1.13.2",
+    "chai": "^6.2.1",
     "express": "^4",
-    "sqlite3": "^5.1.7"
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-ui5": "^4.1.0",
+    "karma-ui5-transpile": "^3.5.15",
+    "puppeteer": "^24.31.0",
+    "sqlite3": "^5.1.7",
+    "ui5-middleware-simpleproxy": "^3.5.2",
+    "ui5-task-zipper": "^3.4.4",
+    "ui5-tooling-transpile": "^3.9.2"
   },
   "devDependencies": {
+    "@cap-js/cds-typer": "^0.35.0",
+    "@cap-js/cds-types": "^0.15.0",
     "@cap-js/sqlite": "^2.0.4",
+    "@sap/cds-dk": ">=9.1",
+    "@sapui5/types": "^1.142.1",
+    "@tsconfig/node22": "^22.0.5",
     "@types/jest": "^30.0.0",
     "jest": "^30.0.0",
-    "ts-jest": "^29.4.5"
+    "ts-jest": "^29.4.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.12.2"
+    
   },
   "scripts": {
     "start": "cds-serve",
+    "build": "tsc",
+    "build:ui": "npm run build --prefix app/band",
+    "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
-  "private": true
+  "private": true,
+  "cds": {
+    "log": {
+      "service": true
+    },
+    "fiori": {
+      "wrap_multiple_errors": false
+    },
+    "build": {
+      "[node!]": {
+        "target": "gen",
+        "tasks": [
+          {
+            "for": "nodejs"
+          },
+          {
+            "for": "typescript"
+          },
+          {
+            "for": "hana"
+          }
+        ]
+      },
+      "[java]": {
+        "target": ".",
+        "tasks": [
+          {
+            "for": "java-cf"
+          }
+        ]
+      },
+      "[hana]": {
+        "target": "gen",
+        "tasks": [
+          {
+            "for": "hana"
+          }
+        ]
+      }
+    },
+    "typer": {
+      "output_directory": "@cds-models",
+      "use_entities_proxy": true
+    }
+  },
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
 }

@@ -68,7 +68,7 @@
       "": {
         "dataSource": "AdminService",
         "settings": {
-         "synchronizationMode": "None",
+          "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
           "earlyRequests": true,
@@ -91,6 +91,11 @@
           "pattern": "Band({key}):?query:",
           "name": "BandDetails",
           "target": "BandDetails"
+        },
+        {
+          "pattern": "Band({key])/band({key2}):?query:",
+          "name": "MusicanObjectPage",
+          "target": "MusicanObjectPage"
         }
       ],
       "targets": {
@@ -101,7 +106,13 @@
           "options": {
             "settings": {
               "entitySet": "Band",
-              "initialLoad": true,
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "useSemanticDateRange": true
+                }
+              },
+              "variantManagement": "Page",
+              "initialLoad": "Enabled",
               "navigation": {
                 "Band": {
                   "detail": {
@@ -118,18 +129,77 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Band"
+              "entitySet": "Band",
+              "navigation": {
+                "band": {
+                  "detail": {
+                    "route": "MusicanObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "band/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "personalization": {
+                      "column": true,
+                      "sort": false
+                    },
+                    "creationMode": {
+                      "name": "Inline",
+                      "createAtEnd": true
+                    }
+                  }
+                }
+              },
+              "editableHeaderContent": false,
+              "content": {
+                "body": {
+                  "sections": {
+                    "CustomSection": {
+                      "template": "band/ext.fragment.CustomSection",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Musicans"
+                      },
+                      "title": "Musicans in the Band"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "MusicanObjectPage": {
+          "type": "Component",
+          "id": "MusicanObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Musican",
+              "editableHeaderContent": false
             }
           }
         }
-      }
-     },
+      },
+      "config": {}
+    },
     "contentDensities": {
       "compact": true,
       "cozy": true
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "band.ext.controller.ObjectPageExtension"
+          }
+        }
+      }
     }
-  },
+   },
   "sap.fiori": {
+    "_version": "1.1.0",
     "registrationIds": [],
     "archeType": "transactional"
   }
