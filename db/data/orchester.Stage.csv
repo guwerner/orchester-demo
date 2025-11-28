@@ -1,0 +1,6 @@
+stageID,name,location,capacity,description,createdAt,createdBy
+650e8400-e29b-41d4-a716-446655440001,Main Concert Hall,Downtown Arts Center,2500,Large auditorium with excellent acoustics,2025-01-01T09:00:00Z,admin
+650e8400-e29b-41d4-a716-446655440002,Jazz Lounge,Entertainment District,400,Intimate venue perfect for jazz performances,2025-01-02T09:00:00Z,admin
+650e8400-e29b-41d4-a716-446655440003,Rock Arena,Fairgrounds,5000,Outdoor venue with state-of-the-art sound system,2025-01-03T09:00:00Z,admin
+650e8400-e29b-41d4-a716-446655440004,Chamber Hall,Cultural Plaza,800,Elegant hall for classical and chamber music performances,2025-01-04T09:00:00Z,admin
+650e8400-e29b-41d4-a716-446655440005,Open Air Amphitheatre,City Park,5000,Outdoor summer venue,2025-10-01T09:00:00Z,test

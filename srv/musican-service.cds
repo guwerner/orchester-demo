@@ -1,6 +1,6 @@
 using orchester as db from '../db/schema';
 
-service AdminService @(impl: './admin-service.js') {
+service MusicanService @() {
 
   entity Musican as projection on db.Musican
     actions {
@@ -10,7 +10,7 @@ service AdminService @(impl: './admin-service.js') {
   entity Band           as projection on db.Band;
   entity Concert        as projection on db.Concert;
   entity BandMembers    as projection on db.BandMembers {
-        * , to_band : redirected to  Band, to_musican  : redirected to Musican
+        * , to_musican : redirected to  Musican, to_band  : redirected to Band
   };
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;

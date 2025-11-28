@@ -1,5 +1,6 @@
 using AdminService from '../srv/admin-service';
 
+
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Band List Page
@@ -33,11 +34,14 @@ annotate AdminService.Band with @(UI: {
 //
 annotate AdminService.Musican with @(UI: {
 
-    Identification     : [{
-        $Type : 'UI.DataFieldForAction',
-        Action: 'AdminService.changeStatus',
-        Label : '{i18n>ChangeStatus}'
-    }],
+    Identification     : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'AdminService.changeStatus',
+            Label : '{i18n>ChangeStatus}'
+        },
+        {Value: musicanID}
+    ],
 
     SelectionFields    : [
         prename,
@@ -49,13 +53,13 @@ annotate AdminService.Musican with @(UI: {
         TypeName      : '{i18n>Musican}',
         TypeNamePlural: '{i18n>Musicans}',
         Title         : {Value: prename},
-        Description   : {Value: ID}
+        Description   : {Value: musicanID}
     },
     PresentationVariant: {
         Visualizations: ['@UI.LineItem'],
         SortOrder     : [{
             $Type     : 'Common.SortOrderTyp',
-            property  : band_ID,
+            property  : musicanID,
             Descending: false
         }]
     },
@@ -73,10 +77,6 @@ annotate AdminService.Musican with @(UI: {
         {
             Value: prename,
             Label: '{i18n>FirstName}'
-        },
-        {
-            Value: band.bandName,
-            Label: '{i18n>Band}'
         },
         {
             Value: status,
@@ -101,7 +101,8 @@ annotate AdminService.Musican with @(UI: {
         {
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>Admin}',
-            Target: '@UI.FieldGroup#Admin'
+            Target: '@UI.PresentationVariant',
         }
+       
     ]
 });

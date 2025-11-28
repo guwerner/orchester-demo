@@ -1,6 +1,6 @@
 sap.ui.define(["sap/fe/core/AppComponent"], function(AppComponent) {
 	"use strict";
-	return AppComponent.extend("admin.Component", {
+	return AppComponent.extend("musican.Component", {
 		metadata: { manifest: "json" }
 	});
 });

@@ -55,7 +55,7 @@
   },
   "sap.ui5": {
     "dependencies": {
-      "minUI5Version": "1.140.0",
+      "minUI5Version": "1.139.0",
       "libs": {
         "sap.fe.templates": {}
       }
@@ -93,9 +93,9 @@
           "target": "BandDetails"
         },
         {
-          "pattern": "Band({key])/band({key2}):?query:",
-          "name": "MusicanObjectPage",
-          "target": "MusicanObjectPage"
+          "pattern": "Band({key])/to_musican/({key2}):?query:",
+          "name": "BandMembersObjectPage",
+          "target": "BandMembersObjectPage"
         }
       ],
       "targets": {
@@ -131,14 +131,14 @@
             "settings": {
               "entitySet": "Band",
               "navigation": {
-                "band": {
+                "to_musican": {
                   "detail": {
-                    "route": "MusicanObjectPage"
+                    "route": "BandMembersObjectPage"
                   }
                 }
               },
               "controlConfiguration": {
-                "band/@com.sap.vocabularies.UI.v1.LineItem": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "ResponsiveTable",
                     "personalization": {
@@ -157,12 +157,12 @@
                 "body": {
                   "sections": {
                     "CustomSection": {
-                      "template": "band/ext.fragment.CustomSection",
+                      "template": "band.ext.fragment.CustomSection",
                       "position": {
                         "placement": "After",
                         "anchor": "Musicans"
                       },
-                      "title": "Musicans in the Band"
+                      "title": "All Bands"
                     }
                   }
                 }
@@ -170,13 +170,13 @@
             }
           }
         },
-        "MusicanObjectPage": {
+        "BandMembersObjectPage": {
           "type": "Component",
-          "id": "MusicanObjectPage",
+          "id": "BandMembersObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Musican",
+              "entitySet": "BandMembers",
               "editableHeaderContent": false
             }
           }
