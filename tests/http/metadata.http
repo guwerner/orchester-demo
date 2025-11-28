@@ -1,0 +1,11 @@
+# AdminService - metadata and service root
+@admin = http://localhost:4004/odata/v4/admin
+@musican = http://localhost:4004/odata/v4/musican
+
+### Get $metadata
+GET {{admin}}/$metadata
+Accept: application/xml
+
+### Get service root (entity sets)
+GET {{musican}}/$metadata
+Accept: application/json

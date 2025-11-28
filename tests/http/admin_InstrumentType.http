@@ -1,0 +1,29 @@
+@admin = http://localhost:4004/odata/v4/admin
+
+### Get all InstrumentTypes
+GET {{admin}}/InstrumentType?$top=50
+Accept: application/json
+
+### Get InstrumentType by code (key is 'code')
+GET {{admin}}/InstrumentType('VIOL')
+Accept: application/json
+
+### Create InstrumentType
+POST {{admin}}/InstrumentType
+Content-Type: application/json
+
+{
+  "code": "HARP",
+  "description": "Harp"
+}
+
+### Update InstrumentType
+PATCH {{admin}}/InstrumentType('VIOL')
+Content-Type: application/json
+
+{
+  "description": "Violin (updated)"
+}
+
+### Delete InstrumentType
+DELETE {{admin}}/InstrumentType('HARP')

@@ -79,12 +79,13 @@ annotate AdminService.Musican with @(UI: {
             Label: '{i18n>FirstName}'
         },
         {
-            Value: status,
-            Label: '{i18n>Status}'
+            Value: musicanStatus.name,
+            Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
+            Label: '{i18n>status}'
         },
         {
             Value: birthdate,
-            Label: '{i18n>Birthdate}'
+            Label: '{i18n>birthdate}'
         }
     ],
     Facets             : [

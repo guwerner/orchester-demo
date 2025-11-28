@@ -1,0 +1,31 @@
+@admin = http://localhost:4004/odata/v4/admin
+
+### Get all Stages
+GET {{admin}}/Stage?$top=20
+Accept: application/json
+
+### Get Stage by ID
+GET {{admin}}/Stage(stage-1)
+Accept: application/json
+
+### Create Stage
+POST {{admin}}/Stage
+Content-Type: application/json
+
+{
+  "name": "Test Venue",
+  "location": "Test City",
+  "capacity": 1234,
+  "description": "Test description"
+}
+
+### Update Stage
+PATCH {{admin}}/Stage(stage-1)
+Content-Type: application/json
+
+{
+  "capacity": 2000
+}
+
+### Delete Stage
+DELETE {{admin}}/Stage(stage-1)

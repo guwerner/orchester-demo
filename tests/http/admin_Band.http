@@ -1,0 +1,38 @@
+@admin = http://localhost:4004/odata/v4/admin
+
+### Get all Bands
+GET {{admin}}/Band?$top=20
+Accept: application/json
+
+### Get a Band by ID
+GET {{admin}}/Band(660e8400-e29b-41d4-a716-446655440001)
+Accept: application/json
+
+### Create a new Band
+POST {{admin}}/Band
+Content-Type: application/json
+
+{
+  "bandName": "Test Band",
+  "genre": "Indie",
+  "foundedIn": "2020-01-01"
+}
+
+### Update a Band
+PATCH {{admin}}/Band(660e8400-e29b-41d4-a716-446655440001)
+Content-Type: application/json
+
+{
+  "genre": "Classical"
+}
+
+### Delete a Band
+DELETE {{admin}}/Band(660e8400-e29b-41d4-a716-446655440001)
+
+### Get Musiacn of a Band by Band ID
+get {{admin}}/Band(660e8400-e29b-41d4-a716-446655440002)/to_musican?$expand=to_musican
+Accept-Language: : application/json
+
+### Get BandMembers of a Band by Band ID
+get {{admin}}/Band(660e8400-e29b-41d4-a716-446655440002)/to_musican
+Accept-Language: : application/json

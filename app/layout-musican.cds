@@ -16,19 +16,20 @@ annotate MusicanService.Musican with @(UI: {
     LineItem           : [
         {
             Value: name,
-            Label: '{i18n>LastName}'
+            Label: '{i18n>name}'
         },
         {
             Value: prename,
-            Label: '{i18n>FirstName}'
+            Label: '{i18n>prename}'
         },
         {
-            Value: status,
-            Label: '{i18n>Status}'
+            Value: musicanStatus.name,
+            Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
+            Label: '{i18n>status}'
         },
         {
             Value: birthdate,
-            Label: '{i18n>Birthdate}'
+            Label: '{i18n>birthdate}'
         }
     ]
     

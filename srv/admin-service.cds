@@ -14,5 +14,6 @@ service AdminService @(impl: './admin-service.js') {
   };
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
+  entity MusicanStatus  as projection on db.MusicanStatus;
 
 };

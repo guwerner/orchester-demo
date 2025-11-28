@@ -19,7 +19,6 @@ annotate AdminService.Band with @(UI: {
 
     ],
     FieldGroup #General: {Data: [
-        {Value: bandID},
         {Value: bandName},
         {Value: genre},
         {Value: foundedIn},
@@ -38,19 +37,28 @@ annotate AdminService.BandMembers with @(UI: {
     LineItem           : [
         {
             Value: to_musican.musicanID,
-            Label: '{i18n>MusicanID}'
+            Label: '{i18n>musicanID}'
         },
         {
             Value: to_musican.prename,
-            Label: '{i18n>Prename}'
+            Label: '{i18n>prename}'
         },
         {
             Value: to_musican.name,
-            Label: '{i18n>Name}'
+            Label: '{i18n>name}'
         },
         {
             Value: to_musican.instrument,
-            Label: '{i18n>Instrument}'
+            Label: '{i18n>instrument}'
+        },
+        {
+            Value: to_musican.birthdate,
+            Label: '{i18n>birthdate}'
+        },
+        {
+            Value: to_musican.musicanStatus.name,   Criticality : (to_musican.musicanStatus.code = #Inactive ? 2 : (to_musican.musicanStatus.code =#Active ? 3 :0)),
+            Label: '{i18n>status}',
+           
         }
     ],
     Facets             : [{

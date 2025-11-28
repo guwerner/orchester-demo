@@ -13,7 +13,7 @@ annotate MusicanService.Musican with @(UI: {
     },
      {
         $Type  : 'UI.ReferenceFacet',
-        Label  : '{i18n>MusicansInBand}',
+        Label  : '{i18n>BandInMusican}',
         Target : 'to_band/@UI.LineItem'
     }],
 
@@ -21,7 +21,10 @@ annotate MusicanService.Musican with @(UI: {
         {Value: name},
         {Value: prename},
         {Value: birthdate},
-        {Value: status}
+        {Value: musicanStatus.name, 
+         Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0))
+         }
+        
     ]},
 
 });
@@ -47,7 +50,10 @@ annotate MusicanService.BandMembers with @(UI: {
         {
             Value: to_band.genre,
             Label: '{i18n>genre}'
-        },
+        }, {
+            Value: to_band.foundedIn,
+            Label: '{i18n>foundedIn}'
+        }
        
     ],
     Facets             : [{
