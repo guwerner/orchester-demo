@@ -1,8 +1,4 @@
-using {
-                           cuid,
-                           managed,
-    sap.common.CodeList as CodeList
-} from '@sap/cds/common';
+using { cuid, managed, sap } from '@sap/cds/common';
 
 namespace orchester;
 
@@ -32,8 +28,7 @@ entity BandMembers : cuid, managed {
     to_band    : Association to Band;
     to_musican : Association to Musican;
     joinDate   : Date;
-   
-};
+  };
 
 entity Stage : managed {
     key stageID     : UUID;
@@ -49,7 +44,6 @@ entity Concert : managed {
         date      : Date;
         location  : String(50);
         to_band   : Association to Band;
-        testen: String;
 };
 
 //
@@ -57,7 +51,7 @@ entity Concert : managed {
 //
 
 @odata.draft.enabled
-entity InstrumentType : CodeList {
+entity InstrumentType : sap.common.CodeList {
     key code        : String(10);
         description : String(100);
 }
@@ -67,6 +61,6 @@ type MusicanStatusCode : String(1) enum {
     Inactive = 'I';
 }
 
-entity MusicanStatus : CodeList {
+entity MusicanStatus : sap.common.CodeList {
     key code : MusicanStatusCode;
 }

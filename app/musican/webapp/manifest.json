@@ -134,7 +134,7 @@
               "navigation": {
                 "to_band": {
                   "detail": {
-                    "route": "BandMembersObjectPage"
+                    "route": "MusianMembersObjectPage"
                   }
                 }
               },
@@ -167,9 +167,9 @@
             }
           }
         },
-        "BandMembersObjectPage": {
+        "MusianMembersObjectPage": {
           "type": "Component",
-          "id": "BandMembersObjectPage",
+          "id": "MusianMembersObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
