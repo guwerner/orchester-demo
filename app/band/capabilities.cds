@@ -1,5 +1,5 @@
-using AdminService from '../../srv/admin-service';
+using BandService from '../../srv/band-service';
 
-annotate AdminService.Band   with @Common.SemanticKey: ['bandID'];
-annotate AdminService.Musican  with @Common.SemanticKey: ['musicanID'];
+annotate BandService.Band   with @Common.SemanticKey: ['bandID'];
+annotate BandService.Musican  with @Common.SemanticKey: ['musicanID'];
 

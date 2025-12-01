@@ -16,7 +16,7 @@
 			]
 		},
 		"dataSources": {
-			"AdminService": {
+			"BandService": {
 				"uri": "odata/v4/admin/",
 				"type": "OData",
 				"settings": {
@@ -42,7 +42,7 @@
 					"subTitle": "{{appSubTitle}}",
 					"icon": "sap-icon://course-book",
 					"indicatorDataSource": {
-						"dataSource": "AdminService",
+						"dataSource": "BandService",
 						"path": "Band/$count",
 						"refresh": 1800
 					}
@@ -78,7 +78,7 @@
 				}
 			},
 			"": {
-				"dataSource": "AdminService",
+				"dataSource": "BandService",
 				"settings": {
 					"synchronizationMode": "None",
 					"operationMode": "Server",

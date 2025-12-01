@@ -25,12 +25,14 @@ entity Musican : managed {
         musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' @default: 'I' @mandatory;
         to_band       : Composition of many BandMembers
                             on to_band.to_musican = $self;
+                     
 };
 
 entity BandMembers : cuid, managed {
     to_band    : Association to Band;
     to_musican : Association to Musican;
     joinDate   : Date;
+   
 };
 
 entity Stage : managed {
@@ -47,6 +49,7 @@ entity Concert : managed {
         date      : Date;
         location  : String(50);
         to_band   : Association to Band;
+        testen: String;
 };
 
 //

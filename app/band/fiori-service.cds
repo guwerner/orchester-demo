@@ -1,11 +1,11 @@
-using AdminService from '../../srv/admin-service';
+using BandService from '../../srv/band-service';
 
 
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Band Object Page
 //
-annotate AdminService.Band with @(UI: {
+annotate BandService.Band with @(UI: {
     Facets             : [{
         $Type : 'UI.ReferenceFacet',
         Label : '{i18n>General}',
@@ -25,7 +25,7 @@ annotate AdminService.Band with @(UI: {
     ]},
 });
 
-annotate AdminService.BandMembers with @(UI: {
+annotate BandService.BandMembers with @(UI: {
     PresentationVariant: {
         Visualizations: ['@UI.LineItem'],
         SortOrder     : [{

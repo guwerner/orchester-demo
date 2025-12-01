@@ -1,11 +1,12 @@
 using orchester as db from '../db/schema';
 
-service AdminService @(impl: './admin-service.js') {
+service BandService @(path: '/processor') {
 
   entity Musican as projection on db.Musican
     actions {
      action changeStatus();
     }
+    function hello (to:String) returns String;
     
   entity Band           as projection on db.Band;
   entity Concert        as projection on db.Concert;

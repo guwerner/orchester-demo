@@ -1,11 +1,11 @@
-using AdminService from '../srv/admin-service';
+using BandService from '../srv/band-service';
 
 
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Band List Page
 //
-annotate AdminService.Band with @(UI: {
+annotate BandService.Band with @(UI: {
     SelectionFields: [
         bandName,
         genre
@@ -32,12 +32,12 @@ annotate AdminService.Band with @(UI: {
 //
 //	Musican List Page
 //
-annotate AdminService.Musican with @(UI: {
+annotate BandService.Musican with @(UI: {
 
     Identification     : [
         {
             $Type : 'UI.DataFieldForAction',
-            Action: 'AdminService.changeStatus',
+            Action: 'BandService.changeStatus',
             Label : '{i18n>ChangeStatus}'
         },
         {Value: musicanID}
@@ -67,7 +67,7 @@ annotate AdminService.Musican with @(UI: {
     LineItem           : [
         {
             $Type : 'UI.DataFieldForAction',
-            Action: 'AdminService.changeStatus',
+            Action: 'BandService.changeStatus',
             Label : '{i18n>ChangeStatus}'
         },
         {

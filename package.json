@@ -5,7 +5,7 @@
   "dependencies": {
     "@sap/cds": "^9",
     "@sap/cds-dk": "^9.4.3",
-    "@sap/ux-ui5-tooling": "^1.19.5",
+    "@sap/ux-ui5-tooling": "^1.19.1",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@ui5/cli": "^4.0.36",
     "axios": "^1.13.2",
@@ -19,7 +19,8 @@
     "sqlite3": "^5.1.7",
     "ui5-middleware-simpleproxy": "^3.5.2",
     "ui5-task-zipper": "^3.4.4",
-    "ui5-tooling-transpile": "^3.9.2"
+    "ui5-tooling-transpile": "^3.9.2",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@cap-js/cds-typer": "^0.35.0",
@@ -29,12 +30,12 @@
     "@sapui5/types": "^1.142.1",
     "@tsconfig/node22": "^22.0.5",
     "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
     "jest": "^30.0.0",
     "ts-jest": "^29.4.5",
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.12.2"
-    
   },
   "scripts": {
     "start": "cds-serve",
@@ -43,9 +44,13 @@
     "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "generate-types": "cds-typer"
   },
   "private": true,
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  },
   "cds": {
     "log": {
       "service": true
@@ -89,8 +94,5 @@
       "output_directory": "@cds-models",
       "use_entities_proxy": true
     }
-  },
-  "imports": {
-    "#cds-models/*": "./@cds-models/*/index.js"
   }
 }
