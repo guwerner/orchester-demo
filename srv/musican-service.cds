@@ -2,9 +2,9 @@ using orchester as db from '../db/schema';
 
 service MusicanService @() {
 
-  entity Musican as projection on db.Musican
-    actions {
-     action changeStatus();
+  entity Musican as projection on db.Musican actions {
+     action statusActive();
+     action statusInactive();
     }
     
   entity Band           as projection on db.Band;

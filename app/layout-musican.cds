@@ -4,16 +4,37 @@ using MusicanService from '../srv/musican-service';
 //
 //	Musican List Page
 //
-annotate MusicanService.Musican with @(UI: {
-
-      SelectionFields    : [
+annotate MusicanService.Musican with @(UI : {
+    Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'MusiancService.statusActive',
+            Label : '{i18n>statusActive}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'MusiancService.statusInactive',
+            Label : '{i18n>statusInactive}'
+        }
+    ],
+    SelectionFields: [
         prename,
         name,
         instrument
 
-    ] ,
+    ],
 
-    LineItem           : [
+    LineItem       : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'MusiancService.statusActive',
+            Label : '{i18n>statusActive}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'MusiancService.statusInactive',
+            Label : '{i18n>statusInactive}'
+        },
         {
             Value: name,
             Label: '{i18n>name}'
@@ -23,34 +44,35 @@ annotate MusicanService.Musican with @(UI: {
             Label: '{i18n>prename}'
         },
         {
-            Value: musicanStatus.name,
-            Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
-            Label: '{i18n>status}'
+            Value       : musicanStatus.name,
+            Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code = #Active ? 3 : 0)),
+            Label       : '{i18n>status}'
         },
         {
             Value: birthdate,
             Label: '{i18n>birthdate}'
         }
     ]
-    
+
 });
+
 annotate MusicanService.Band with @(UI: {
-   HeaderInfo  : {
-       $Type : 'UI.HeaderInfoType',
-       TypeName : 'i18n>Band',
-       TypeNamePlural : 'i18n>Bands',
-   },
-    PresentationVariant  : {
-        $Type : 'UI.PresentationVariantType',
+    HeaderInfo         : {
+        $Type         : 'UI.HeaderInfoType',
+        TypeName      : 'i18n>Band',
+        TypeNamePlural: 'i18n>Bands',
+    },
+    PresentationVariant: {
+        $Type         : 'UI.PresentationVariantType',
         Visualizations: ['@UI.LineItem'],
         SortOrder     : [{
             $Type     : 'Common.SortOrderTyp',
             property  : bandID,
             Descending: false
         }]
-        
+
     },
-    LineItem  : [
+    LineItem           : [
         {
             Value: bandID,
             Label: '{i18n>bandID}'
@@ -65,8 +87,8 @@ annotate MusicanService.Band with @(UI: {
         },
 
     ],
-    Facets  : [
-          {
+    Facets             : [
+        {
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>General}',
             Target: '@UI.FieldGroup#General'
@@ -78,7 +100,6 @@ annotate MusicanService.Band with @(UI: {
             Label : '{i18n>Bands}'
         }
 
-        
+
     ],
-})    
-  
+})

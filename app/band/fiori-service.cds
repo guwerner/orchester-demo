@@ -6,6 +6,7 @@ using BandService from '../../srv/band-service';
 //	Band Object Page
 //
 annotate BandService.Band with @(UI: {
+   
     Facets             : [{
         $Type : 'UI.ReferenceFacet',
         Label : '{i18n>General}',
@@ -35,6 +36,7 @@ annotate BandService.BandMembers with @(UI: {
         }]
     },
     LineItem           : [
+        
         {
             Value: to_musican.musicanID,
             Label: '{i18n>musicanID}'

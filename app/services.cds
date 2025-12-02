@@ -7,5 +7,6 @@ using from './musican/fiori-service';
 using from './band/fiori-service';
 using from './layout-band';
 using from './layout-musican';
+using from './musican/field-control';
 
 

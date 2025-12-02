@@ -6,6 +6,7 @@ using MusicanService from '../../srv/musican-service';
 //	Musican Object Page
 //
 annotate MusicanService.Musican with @(UI: {
+
  Facets             : [{
         $Type : 'UI.ReferenceFacet',
         Label : '{i18n>General}',
@@ -24,7 +25,6 @@ annotate MusicanService.Musican with @(UI: {
         {Value: musicanStatus.name, 
          Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0))
          }
-        
     ]},
 
 });
@@ -39,6 +39,7 @@ annotate MusicanService.BandMembers with @(UI: {
         }]
     },
     LineItem           : [
+      
         {
             Value: to_band.bandID,
             Label: '{i18n>bandID}'

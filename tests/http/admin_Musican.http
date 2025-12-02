@@ -1,15 +1,15 @@
-@admin = http://localhost:4004/odata/v4/admin
+@musican = http://localhost:4004/odata/v4/musican
 
 ### Get all Musicans
-GET {{admin}}/Musican?$top=20
+GET {{musican}}/Musican?$top=20
 Accept: application/json
 
 ### Get a Musican by ID (replace GUID as needed)
-GET {{admin}}/Musican(550e8400-e29b-41d4-a716-446655440001)
+GET {{musican}}/Musican(550e8400-e29b-41d4-a716-446655440001)
 Accept: application/json
 
 ### Create a new Musican
-POST {{admin}}/Musican
+POST {{musican}}/Musican
 Content-Type: application/json
 
 {
@@ -17,11 +17,11 @@ Content-Type: application/json
   "prename": "TestFirst",
   "instrument": "Violin",
   "birthdate": "1990-01-01",
-  "musicanStatus": "I"
+  "musicanStatus_code": "I"
 }
 
 ### Update a Musican (PATCH) - replace ID
-PATCH {{admin}}/Musican(550e8400-e29b-41d4-a716-446655440001)
+PATCH {{musican}}/Musican(550e8400-e29b-41d4-a716-446655440001)
 Content-Type: application/json
 
 {
@@ -29,4 +29,10 @@ Content-Type: application/json
 }
 
 ### Delete a Musican (replace ID)
-DELETE {{admin}}/Musican(550e8400-e29b-41d4-a716-446655440001)
+DELETE {{musican}}/Musican(550e8400-e29b-41d4-a716-446655440001)
+
+### Change Status to Inactive
+POST {{musican}}/Musican(550e8400-e29b-41d4-a716-446655440001)/MusicanService.statusInactive HTTP/1.1 
+#header name: header value
+Content-Type: application/json
+content

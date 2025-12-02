@@ -67,6 +67,7 @@
       },
       "": {
         "dataSource": "BandService",
+         "preload": true,
         "settings": {
          "synchronizationMode": "None",
           "operationMode": "Server",

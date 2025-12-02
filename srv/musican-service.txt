@@ -1,0 +1,29 @@
+const cds = require('@sap/cds')
+const log = cds.log("musican-service");
+
+module.exports = async function (srv) {
+    
+
+           const { Musican, MusicanStatusCode } = srv.entities;
+         // Handler for the CreateMusican action declared in the service CDS
+         srv.on(["changeStatus"], Musican,async (req)  => {
+           const tx = await cds.tx(req);
+           log.info('changeStatus called'); 
+           try {
+              const changeMusican = await tx.run(
+                SELECT.one.from(Musican).where("ID", "=" ,req.params[0].ID )
+             );
+             changeMusican.musicanStatus = MusicanStatusCode.Active;
+              const changeStatus = await tx.run(
+                UPDATE(Musican).where(changeMusican).set( changeMusican ) 
+             );
+             req.info(200, 'Status changed successfully')
+             return cds.tx(req).run(SELECT.one(Musican).where({ ID: req.params[0].ID }));
+         } catch (err) {
+             log.error('Error changing status of Musican:', err)
+             req.error(500, 'STATUS_CHANGE_FAILED')
+           }
+         })
+ 
+
+}
