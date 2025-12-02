@@ -3,21 +3,21 @@
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
-    "@cap-js/cds-test": "^0.4.1",
     "@sap/cds": "^9",
     "express": "^4",
     "jest": "^30.2.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@cap-js/cds-test": "^0",
     "@cap-js/cds-typer": "^0.38.0",
     "@cap-js/cds-types": "^0.15.0",
     "@cap-js/sqlite": "^2",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.0.0",
-    "qunit": "^2.9.3",
-    "ts-jest": "^29.2.5",
     "tsx": "^4",
+     "qunit": "^2.9.3",
+    "ts-jest": "^29.2.5",
     "typescript": "^5"
   },
   "scripts": {
@@ -83,8 +83,7 @@
     "globalSetup": "./test/setup.ts",
     "testEnvironment": "node",
     "testTimeout": 20000
-  },
-  "mocha": {
+  },"mocha": {
     "node-option": [
       "import=tsx"
     ],
