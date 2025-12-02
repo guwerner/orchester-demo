@@ -18,7 +18,7 @@ entity Musican : managed {
         prename       : String(30)                    @title: '{i18n>FirstName}';
         instrument    : String(50)                    @title: '{i18n>Instruments}';
         birthdate     : Date                          @title: '{i18n>Birthdate}';
-        musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' @default: 'I' @mandatory;
+        musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' @default: 'Inactive' @mandatory @readonly; 
         to_band       : Composition of many BandMembers
                             on to_band.to_musican = $self;
                      

@@ -22,8 +22,9 @@ annotate MusicanService.Musican with @(UI: {
         {Value: name},
         {Value: prename},
         {Value: birthdate},
-        {Value: musicanStatus.name, 
-         Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0))
+        {Value: musicanStatus.name,  
+         Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
+          LabeL: 'i18n>Status'
          }
     ]},
 
