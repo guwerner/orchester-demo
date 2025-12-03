@@ -10,8 +10,8 @@
     "description": "{{appDescription}}",
     "i18n": "i18n/i18n.properties",
     "dataSources": {
-      "BandService": {
-        "uri": "odata/v4/band/",
+      "MainService": {
+        "uri": "band/",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0"
@@ -55,7 +55,7 @@
   },
   "sap.ui5": {
     "dependencies": {
-      "minUI5Version": "1.139.0",
+      "minUI5Version": "1.140.0",
       "libs": {
         "sap.fe.templates": {}
       }
@@ -66,7 +66,8 @@
         "uri": "i18n/i18n.properties"
       },
       "": {
-        "dataSource": "BandService",
+        "dataSource": "MainService",
+         "preload": true,
         "settings": {
           "synchronizationMode": "None",
           "operationMode": "Server",
@@ -94,8 +95,8 @@
         },
         {
           "pattern": "Band({key])/to_musican/({key2}):?query:",
-          "name": "BandMembersObjectPage",
-          "target": "BandMembersObjectPage"
+          "name": "Band2MusicansObjectPage",
+          "target": "Band2MusicansObjectPage"
         }
       ],
       "targets": {
@@ -133,7 +134,7 @@
               "navigation": {
                 "to_musican": {
                   "detail": {
-                    "route": "BandMembersObjectPage"
+                    "route": "Band2MusicansObjectPage"
                   }
                 }
               },
@@ -143,25 +144,30 @@
                     "type": "ResponsiveTable",
                     "personalization": {
                       "column": true,
-                      "sort": false
+                      "sort": true,
+                      "filter": true
                     },
                     "creationMode": {
                       "name": "Inline",
                       "createAtEnd": true
-                    }
+                    },
+                    "editableHeaderContent": false,
+                    "showRelatedApps": true,
+                    "enableMassEdit": true,
+                    "enableExport": true
                   }
                 }
               }
             }
           }
         },
-        "BandMembersObjectPage": {
+        "Band2MusicansObjectPage": {
           "type": "Component",
-          "id": "BandMembersObjectPage",
+          "id": "Band2MusicansObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "BandMembers",
+              "entitySet": "Band2Musicans",
               "editableHeaderContent": false
             }
           }

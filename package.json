@@ -28,7 +28,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "generate-types": "cds-typer"
+    "generate-types": "cds-typer",
+    "watch" : "cds watch --port 4040"
   },
   "private": true,
   "imports": {

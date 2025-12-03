@@ -1,15 +1,15 @@
-@admin = http://localhost:4004/odata/v4/admin
+@band = http://localhost:4004/odata/v4/band
 
-### Get all BandMembers (junction table)
-GET {{admin}}/BandMembers?$top=50
+### Get all Band2Musicans (junction table)
+GET {{band}}/Band2Musicans?$top=50
 Accept: application/json
 
-### Get BandMembers by ID
-GET {{admin}}/BandMembers(770e8400-e29b-41d4-a716-446655440001)
+### Get Band2Musicans by ID
+GET {{band}}/Band2Musicans(770e8400-e29b-41d4-a716-446655440001)
 Accept: application/json
 
-### Create a BandMembers entry (link Musican to Band)
-POST {{admin}}/BandMembers
+### Create a Band2Musican entry (link Musican to Band)
+POST {{band}}/Band2Musicans
 Content-Type: application/json
 
 {
@@ -18,5 +18,5 @@ Content-Type: application/json
   "joinDate": "2025-10-01"
 }
 
-### Remove a BandMembers entry
-DELETE {{admin}}/BandMembers(770e8400-e29b-41d4-a716-446655440001)
+### Remove a Band2Musicans entry
+DELETE {{band}}/Band2Musicans(770e8400-e29b-41d4-a716-446655440001)

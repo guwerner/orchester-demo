@@ -1,19 +1,24 @@
 using orchester as db from '../db/schema';
 
-service MusicanService @() {
+service MusicanService @(path: '/musican' ) {
+
 
   entity Musican as projection on db.Musican actions {
-     action statusActive();
-     action statusInactive();
+    action statusActive();
+    action statusInactive();
     }
-    
+
+  @cds.redirection.target    
   entity Band           as projection on db.Band;
   entity Concert        as projection on db.Concert;
-  entity BandMembers    as projection on db.BandMembers {
+  entity Band2Musicans    as projection on db.Band2Musicans {
         * , to_musican : redirected to  Musican, to_band  : redirected to Band
   };
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;
+
+  @readonly : true
+  entity GenreView as projection on db.GenreView;
 
 };

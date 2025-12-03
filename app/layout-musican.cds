@@ -56,14 +56,14 @@ annotate MusicanService.Musican with @(UI : {
 
 });
 
-annotate MusicanService.Band with @(UI: {
+annotate MusicanService.Band with @(
+    UI: {
     HeaderInfo         : {
         $Type         : 'UI.HeaderInfoType',
         TypeName      : 'i18n>Band',
         TypeNamePlural: 'i18n>Bands',
     },
     PresentationVariant: {
-        $Type         : 'UI.PresentationVariantType',
         Visualizations: ['@UI.LineItem'],
         SortOrder     : [{
             $Type     : 'Common.SortOrderTyp',

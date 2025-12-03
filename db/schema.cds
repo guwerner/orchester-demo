@@ -2,12 +2,13 @@ using { cuid, managed, sap } from '@sap/cds/common';
 
 namespace orchester;
 
+
 entity Band : managed {
     key bandID     : UUID;
         bandName   : String(50) @title: '{i18n>Band}';
         genre      : String(20) @title: '{i18n>Genre}';
         foundedIn  : Date       @title: '{i18n>FoundedIn}';
-        to_musican : Composition of many BandMembers
+        to_musican : Composition of many Band2Musicans
                          on to_musican.to_band = $self;
 };
 
@@ -18,19 +19,18 @@ entity Musican : managed {
         prename       : String(30)                    @title: '{i18n>FirstName}';
         instrument    : String(50)                    @title: '{i18n>Instruments}';
         birthdate     : Date                          @title: '{i18n>Birthdate}';
-        musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' @default: 'Inactive' @mandatory @readonly; 
-        to_band       : Composition of many BandMembers
+        musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' default 'I'    @readonly ; 
+        to_band       : Composition of many Band2Musicans
                             on to_band.to_musican = $self;
                      
 };
 
-entity BandMembers : cuid, managed {
+entity Band2Musicans : cuid {
     to_band    : Association to Band;
     to_musican : Association to Musican;
-    joinDate   : Date;
+    joinDate   : Date; 
   };
-
-entity Stage : managed {
+ entity Stage : managed {
     key stageID     : UUID;
         name        : String(50);
         location    : String(50);
@@ -61,6 +61,16 @@ type MusicanStatusCode : String(1) enum {
     Inactive = 'I';
 }
 
+@cds.odata.valuelist
 entity MusicanStatus : sap.common.CodeList {
     key code : MusicanStatusCode;
+}
+
+/////////////////////
+// Views
+/////////////////////
+
+define View GenreView as 
+select from Band distinct {
+    key genre 
 }

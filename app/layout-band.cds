@@ -26,30 +26,15 @@ annotate BandService.Band with @(UI: {
         }
     ]
 });
-
-
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Musican List Page
 //
-annotate BandService.Musican with @(UI: {
-
-    Identification     : [
-        {
-            $Type : 'UI.DataFieldForAction',
-            Action: 'BandService.changeStatus',
-            Label : '{i18n>ChangeStatus}'
-        },
-        {Value: musicanID}
-    ],
-
-    SelectionFields    : [
-        prename,
-        name,
-        instrument
-
-    ],
-    HeaderInfo         : {
+annotate BandService.Musican with @(
+    
+    UI: {
+       HeaderInfo         : {
+        $Type         : 'UI.HeaderInfoType',
         TypeName      : '{i18n>Musican}',
         TypeNamePlural: '{i18n>Musicans}',
         Title         : {Value: prename},
@@ -63,6 +48,13 @@ annotate BandService.Musican with @(UI: {
             Descending: false
         }]
     },
+    SelectionFields    : [
+        prename,
+        name,
+        instrument
+
+    ],
+
 
     LineItem           : [
         {
@@ -96,12 +88,8 @@ annotate BandService.Musican with @(UI: {
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>Details}',
-            Target: '@UI.FieldGroup#Details'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
             Label : '{i18n>Admin}',
+            ID:   'MusicanList',
             Target: '@UI.PresentationVariant',
         }
        
