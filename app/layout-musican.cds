@@ -23,7 +23,7 @@ annotate MusicanService.Musican with @(UI : {
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Action: 'MusiancService.setAbilitydown',
+            Action: 'MusiancService.setAbilityDown',
             Label : '{i18n>abilitydown}'
         }
     ],
@@ -52,7 +52,7 @@ annotate MusicanService.Musican with @(UI : {
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Action: 'MusiancService.setAbilitydown',
+            Action: 'MusiancService.setAbilityDown',
             Label : '{i18n>abilityDown}'
         },
         {
@@ -84,6 +84,13 @@ annotate MusicanService.Musican with @(UI : {
             Label             : '{i18n>ability}',
             ![@UI.Importance] : #High,
             @HTML5.CssDefaults: {width: '9em'}
+        },
+         {
+            Value             : musicanAbility_code,
+            Label             : '{i18n>ability}',
+            ![@UI.Importance] : #High,
+            @HTML5.CssDefaults: {width: '2em'},
+            ![@UI.Hidden]    : false
         },
         {
             Value             : birthdate,

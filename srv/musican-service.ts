@@ -8,7 +8,7 @@ export class MusicanService extends cds.ApplicationService {
     // Action Implementations...
     //
 
-    const { statusActive, statusInactive,setAbilityUp, setAbilitydown } = Musican.actions;
+    const { statusActive, statusInactive,setAbilityUp, setAbilityDown } = Musican.actions;
     this.before([statusActive], [Musican, Musican.drafts], async (req) => {
     const existingDraft = await SELECT.one(Musican.drafts.name).where(req.params[0])
       .columns(musican => { musican.DraftAdministrativeData.InProcessByUser.as('InProcessByUser') } )
@@ -22,7 +22,7 @@ export class MusicanService extends cds.ApplicationService {
      let succeeded =  await UPDATE (req.subject).with({ musicanStatus_code : MusicanStatusCode.Active }) 
      if (succeeded) {
         const reloadMusican = await SELECT.one(Musican).from(Musican). where(req.params[0])
-         console.log ("Geht doch! " + reloadMusican?.musicanStatus_code) ; 
+         console.log ("Geht doch " + reloadMusican?.musicanStatus_code) ; 
      }else{
        console.log ("bin nun hier Fehler! ");
      }
@@ -31,16 +31,16 @@ export class MusicanService extends cds.ApplicationService {
 
 //    this.on (setAbilityUp, req => UPDATE (req.subject).with({ musicanAblitity_code :  2 }) ) ; 
     this.on (setAbilityUp, async req => { 
-     let succeeded =  await UPDATE (req.subject).with `musicanAblitity_code = 4` 
+     let succeeded =  await UPDATE (req.subject).set `musicanAbility_code = musicanAbility_code + 1` 
      if (succeeded) {
         const reloadMusican = await SELECT.one(Musican).from(Musican). where(req.params[0])
-       console.log ("Geht doch! " + reloadMusican?.musicanAbility_code) ; 
+       console.log ("Geht doch nun: " + reloadMusican?.musicanAbility_code) ; 
      }else{
        console.log ("bin nun hier Fehler! ");
      }
     })
 
-    this.on (setAbilitydown, req => UPDATE (req.subject).with({ musicanAblitity_code :  '1' }) ) ; 
+    this.on (setAbilityDown, req => UPDATE (req.subject).set `musicanAbility_code = musicanAbility_code - 1`)
     
     return super.init()
   }

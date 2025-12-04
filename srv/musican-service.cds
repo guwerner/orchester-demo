@@ -7,7 +7,7 @@ service MusicanService @(path: '/musican' ) {
     action statusActive();
     action statusInactive();
     action setAbilityUp();
-    action setAbilitydown();
+    action setAbilityDown();
     }
 
   @cds.redirection.target    

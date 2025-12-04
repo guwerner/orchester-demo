@@ -8,15 +8,20 @@ annotate MusicanService.Musican with
 actions {
     statusInactive @(
     Core.OperationAvailable : ($self.musicanStatus.code != #Inactive),
-    Common.SideEffects.TargetProperties : ['in/musicanStatus_code' ],
+    Common.SideEffects.TargetProperties : ['in/musicanStatus_code', 'in/musicanStatus' ],
     );
     statusActive @(
     Core.OperationAvailable : ($self.musicanStatus.code != #Active),
-    Common.SideEffects.TargetProperties : ['in/musicanStatus_code'],        
+    Common.SideEffects.TargetProperties : ['in/musicanStatus_code', 'in/musicanStatus'],        
     );
     setAbilityUp @(
-    Core.OperationAvailable : ($self.musicanAbility.code != 5),
-    Common.SideEffects.TargetProperties : ['in/musicanAbility_code'],        
+    Core.OperationAvailable : ($self.musicanAbility.code < 5 ),
+    Common.SideEffects.TargetProperties : ['in/musicanAbility_code', 'in/musicanAbility'],        
+    );
+    setAbilityDown @(
+    Core.OperationAvailable : ($self.musicanAbility.code > 1 ),
+    Common.SideEffects.TargetProperties : ['in/musicanAbility_code', 'in/musicanAbility'],   
+
     );
 }    
 
