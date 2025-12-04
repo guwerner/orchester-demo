@@ -1,4 +1,4 @@
-using { cuid, managed, sap } from '@sap/cds/common';
+using { cuid, managed, sap  } from '@sap/cds/common';
 
 namespace orchester;
 
@@ -15,13 +15,14 @@ entity Band : managed {
 @odata.draft.enabled
 entity Musican : managed {
     key musicanID     : UUID;
-        name          : String(30)                    @title: '{i18n>LastName}';
-        prename       : String(30)                    @title: '{i18n>FirstName}';
-        instrument    : String(50)                    @title: '{i18n>Instruments}';
+        name          : String(20)                    @title: '{i18n>LastName}';
+        prename       : String(25)                    @title: '{i18n>FirstName}';
+        instrument    : String(20)                    @title: '{i18n>Instruments}';
         birthdate     : Date                          @title: '{i18n>Birthdate}';
-        musicanStatus : Association to MusicanStatus  @title: '{i18n>Status}' default 'I'    @readonly ; 
+        musicanStatus : Association to MusicanStatus  default 'I'    @readonly ; 
         to_band       : Composition of many Band2Musicans
                             on to_band.to_musican = $self;
+        musicanAbility : Association to MusicanAblitity  default 1    @readonly ;                          
                      
 };
 
@@ -51,7 +52,7 @@ entity Concert : managed {
 //
 
 @odata.draft.enabled
-entity InstrumentType : sap.common.CodeList {
+entity InstrumentType :  sap.common.CodeList {
     key code        : String(10);
         description : String(100);
 }
@@ -62,9 +63,23 @@ type MusicanStatusCode : String(1) enum {
 }
 
 @cds.odata.valuelist
-entity MusicanStatus : sap.common.CodeList {
+entity MusicanStatus :  sap.common.CodeList {
     key code : MusicanStatusCode;
 }
+
+type MusicanAblitityCode: UInt8 enum {
+    Starter = 1;
+    Advanced = 2;
+    Amateur = 3;
+    Profi   = 4;
+    Expert   = 5;
+}
+@cds.odata.valuelist
+entity MusicanAblitity :  sap.common.CodeList {
+    key code : MusicanAblitityCode;
+    descr : String(100);
+}
+
 
 /////////////////////
 // Views

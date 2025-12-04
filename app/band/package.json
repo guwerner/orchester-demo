@@ -9,8 +9,8 @@
   "scripts": {
     "build": "ui5 build preload --clean-dest --include-task=generateCachebusterInfo",
     "start": "ui5 serve",
-    "test": "npm run test:node && npm run test:java",
-    "test:java": "karma start --server=java --single-run",
+    "test": "npm run test:node",
+    "test:jest": "jest",
     "test:node": "karma start --server=node --single-run",
     "ts-typecheck": "tsc --noEmit",
     "prestart": "npm run ts-typecheck",

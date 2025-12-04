@@ -7,7 +7,7 @@ const { GET, POST, PATCH, axios, expect } = cds.test(__dirname+'/..')
 describe('Basic OData', () => {
 
  it('serves $metadata documents in v4', async () => {
-    const { headers, status, data } = await GET `/odata/v4/musican/$metadata`
+    const { headers, status, data } = await GET `/musican/$metadata`
     expect(status).to.equal(200)
     expect(headers).to.contain({
       // 'content-type': 'application/xml', //> fails with 'application/xml;charset=utf-8', which is set by express

@@ -23,7 +23,7 @@
         "Band-manage": {
           "signature": {
             "parameters": {
-              "Band.ID": {
+              "Band.bandID": {
                 "renameTo": "ID"
               }
             },
@@ -126,7 +126,7 @@
         },
         "BandDetails": {
           "type": "Component",
-          "id": "BandDetails",
+          "id": "BandDetailsList",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
@@ -144,8 +144,7 @@
                     "type": "ResponsiveTable",
                     "personalization": {
                       "column": true,
-                      "sort": true,
-                      "filter": true
+                      "sort": true
                     },
                     "creationMode": {
                       "name": "Inline",
@@ -172,8 +171,7 @@
             }
           }
         }
-      },
-      "config": {}
+      }
     },
     "contentDensities": {
       "compact": true,
@@ -181,7 +179,6 @@
    }
    },
   "sap.fiori": {
-    "_version": "1.1.0",
     "registrationIds": [],
     "archeType": "transactional"
   }

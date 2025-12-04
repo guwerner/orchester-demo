@@ -1,6 +1,6 @@
 import cds from '@sap/cds';
 import { Musican, MusicanStatus } from '#cds-models/MusicanService';
-import { MusicanStatusCode } from '#cds-models/orchester';
+import { MusicanStatusCode, MusicanAblitityCode } from '#cds-models/orchester';
 export class MusicanService extends cds.ApplicationService {
   async init() {
 
@@ -8,7 +8,7 @@ export class MusicanService extends cds.ApplicationService {
     // Action Implementations...
     //
 
-    const { statusActive, statusInactive} = Musican.actions;
+    const { statusActive, statusInactive,setAbilityUp, setAbilitydown } = Musican.actions;
     this.before([statusActive], [Musican, Musican.drafts], async (req) => {
     const existingDraft = await SELECT.one(Musican.drafts.name).where(req.params[0])
       .columns(musican => { musican.DraftAdministrativeData.InProcessByUser.as('InProcessByUser') } )
@@ -22,13 +22,25 @@ export class MusicanService extends cds.ApplicationService {
      let succeeded =  await UPDATE (req.subject).with({ musicanStatus_code : MusicanStatusCode.Active }) 
      if (succeeded) {
         const reloadMusican = await SELECT.one(Musican).from(Musican). where(req.params[0])
-        console.log ("bin nun hier auch ! " + reloadMusican?.musicanStatus_code );
+         console.log ("Geht doch! " + reloadMusican?.musicanStatus_code) ; 
      }else{
-       console.log ("bin nun hier auch fehkler!");
-      return "ging NICHT"
+       console.log ("bin nun hier Fehler! ");
      }
     })
-    this.on (statusInactive, req => UPDATE (req.subject).with({ musicanStatus_code : MusicanStatusCode.Inactive }) ) ;
+    this.on (statusInactive, req => UPDATE (req.subject).with({ musicanStatus_code : MusicanStatusCode.Inactive }) ) ; 
+
+//    this.on (setAbilityUp, req => UPDATE (req.subject).with({ musicanAblitity_code :  2 }) ) ; 
+    this.on (setAbilityUp, async req => { 
+     let succeeded =  await UPDATE (req.subject).with `musicanAblitity_code = 4` 
+     if (succeeded) {
+        const reloadMusican = await SELECT.one(Musican).from(Musican). where(req.params[0])
+       console.log ("Geht doch! " + reloadMusican?.musicanAbility_code) ; 
+     }else{
+       console.log ("bin nun hier Fehler! ");
+     }
+    })
+
+    this.on (setAbilitydown, req => UPDATE (req.subject).with({ musicanAblitity_code :  '1' }) ) ; 
     
     return super.init()
   }

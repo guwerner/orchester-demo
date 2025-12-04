@@ -67,7 +67,7 @@ annotate BandService.Band2Musicans with @(
             Visualizations: ['@UI.LineItem'],
             SortOrder     : [{
                 $Type     : 'Common.SortOrderType',
-                Property  : 'to_musican.musicanID',
+                Property  : 'to_musican.name',
                 Descending: false
             }]
         }
@@ -85,7 +85,8 @@ annotate BandService.Band2Musicans with @(
             },
             TypeName               : '{i18n>Orchester}',
             TypeNamePlural         : '{i18n>Orchesters}',
-            Description            : {Value: to_band.genre},
+            Description            : {Value: to_band.genre}
+        },
             FieldGroup #Description: {Data: [
                 {
                     $Type: 'UI.DataField',
@@ -120,6 +121,5 @@ annotate BandService.Band2Musicans with @(
 
             }]
         }]
-
-    }
+   
 );

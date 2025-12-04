@@ -13,7 +13,11 @@ actions {
     statusActive @(
     Core.OperationAvailable : ($self.musicanStatus.code != #Active),
     Common.SideEffects.TargetProperties : ['in/musicanStatus_code'],        
-    )
+    );
+    setAbilityUp @(
+    Core.OperationAvailable : ($self.musicanAbility.code != 5),
+    Common.SideEffects.TargetProperties : ['in/musicanAbility_code'],        
+    );
 }    
 
 

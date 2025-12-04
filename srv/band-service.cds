@@ -15,5 +15,6 @@ service BandService @(path: '/band') {
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;
+  entity MusicanAblitity as projection on db.MusicanAblitity;
 
 };

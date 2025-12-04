@@ -50,17 +50,12 @@ annotate BandService.Musican with @(
     },
     SelectionFields    : [
         prename,
-        name,
-        instrument
-
+        name
     ],
-
-
     LineItem           : [
         {
-            $Type : 'UI.DataFieldForAction',
-            Action: 'BandService.changeStatus',
-            Label : '{i18n>ChangeStatus}'
+            Value: musicanID,
+            Label : '{i18n>ID}'
         },
         {
             Value: name,

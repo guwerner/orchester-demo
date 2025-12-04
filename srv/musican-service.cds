@@ -6,6 +6,8 @@ service MusicanService @(path: '/musican' ) {
   entity Musican as projection on db.Musican actions {
     action statusActive();
     action statusInactive();
+    action setAbilityUp();
+    action setAbilitydown();
     }
 
   @cds.redirection.target    
@@ -17,6 +19,7 @@ service MusicanService @(path: '/musican' ) {
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;
+  entity MusicanAblitity as projection on db.MusicanAblitity;
 
   @readonly : true
   entity GenreView as projection on db.GenreView;

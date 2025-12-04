@@ -23,7 +23,7 @@
         "Musican-manage": {
           "signature": {
             "parameters": {
-              "Musican.ID": {
+              "Musican.musicanID": {
                 "renameTo": "ID"
               }
             },

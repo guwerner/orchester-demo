@@ -1,38 +1,6 @@
 using MusicanService from '../../srv/musican-service';
 
 
-////////////////////////////////////////////////////////////////////////////
-//
-//	Musican Object Page
-//
-annotate MusicanService.Musican with @(UI : {
-
-    Facets              : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>General}',
-            Target: '@UI.FieldGroup#General'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>BandInMusican}',
-            Target: 'to_band/@UI.LineItem'
-        }
-    ],
-
-    FieldGroup #General : {Data : [
-        {Value: name},
-        {Value: prename},
-        {Value: birthdate},
-        {
-            Value                  : musicanStatus.name,
-            Criticality            : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code = #Active ? 3 : 0)),
-            LabeL                  : 'i18n>Status',
-            ![@Common.FieldControl]: #ReadOnly,
-        }
-    ]},
-
-});
 
 annotate MusicanService.Band2Musicans with @(
     // ---------------------------------------------------------------------------
@@ -82,7 +50,7 @@ annotate MusicanService.Band2Musicans with @(
             },
             TypeName      : '{i18n>Musican}',
             TypeNamePlural: '{i18n>Musicans}',
-            Description   : {Value: to_band.bandName}
+            Description   : {Value: to_musican.prename}
         },
         FieldGroup #Description: {Data: [
             {
