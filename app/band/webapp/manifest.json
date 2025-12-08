@@ -94,7 +94,7 @@
           "target": "BandDetails"
         },
         {
-          "pattern": "Band({key])/to_musican/({key2}):?query:",
+          "pattern": "Band({key})/to_musican({key2}):?query:",
           "name": "Band2MusicansObjectPage",
           "target": "Band2MusicansObjectPage"
         }

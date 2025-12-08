@@ -1,32 +1,6 @@
 using BandService from '../../srv/band-service';
 
 
-////////////////////////////////////////////////////////////////////////////
-//
-//	Band Object Page
-//
-annotate BandService.Band with @(UI: {
-
-    Facets             : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>General}',
-            Target: '@UI.FieldGroup#General'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>MusicansInBand}',
-            Target: 'to_musican/@UI.LineItem'
-        },
-
-    ],
-    FieldGroup #General: {Data: [
-        {Value: bandName},
-        {Value: genre},
-        {Value: foundedIn},
-    ]},
-});
-
 annotate BandService.Band2Musicans with @(
     // ---------------------------------------------------------------------------
     // List Page
@@ -37,26 +11,32 @@ annotate BandService.Band2Musicans with @(
         LineItem           : [
 
             {
+                $Type: 'UI.DataField',
                 Value: to_musican.musicanID,
                 Label: '{i18n>musicanID}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_musican.prename,
                 Label: '{i18n>prename}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_musican.name,
                 Label: '{i18n>name}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_musican.instrument,
                 Label: '{i18n>instrument}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_musican.birthdate,
                 Label: '{i18n>birthdate}'
             },
             {
+                $Type: 'UI.DataField',
                 Value       : to_musican.musicanStatus.name,
                 Criticality : (to_musican.musicanStatus.code = #Inactive ? 2 : (to_musican.musicanStatus.code = #Active ? 3 : 0)),
                 Label       : '{i18n>status}',
@@ -90,22 +70,25 @@ annotate BandService.Band2Musicans with @(
             FieldGroup #Description: {Data: [
                 {
                     $Type: 'UI.DataField',
-                    Value: to_musican.musicanID,
+                    Value: to_musican_musicanID,
                 },
                 {
                     $Type            : 'UI.DataField',
                     Value            : to_musican.name,
-                    ![@UI.Importance]: #High
+                    ![@Common.FieldControl] : #ReadOnly,
+                   ![@UI.Importance]: #High
                 },
                 {
                     $Type            : 'UI.DataField',
                     Value            : to_musican.prename,
+                    ![@Common.FieldControl] : #ReadOnly,
                     ![@UI.Importance]: #High
                 },
                 {
                     $Type            : 'UI.DataField',
                     Value            : to_musican.birthdate,
-                    ![@UI.Importance]: #High
+                   ![@Common.FieldControl] : #ReadOnly,
+                   ![@UI.Importance]: #High
                 }
             ]}
         },

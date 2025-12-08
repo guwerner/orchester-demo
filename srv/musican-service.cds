@@ -14,8 +14,8 @@ service MusicanService @(path: '/musican' ) {
   entity Band           as projection on db.Band;
   entity Concert        as projection on db.Concert;
   entity Band2Musicans    as projection on db.Band2Musicans {
-        * , to_musican : redirected to  Musican, to_band  : redirected to Band
-  };
+         * , to_band : redirected to  Band, to_musican  : redirected to Musican
+   };
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;
@@ -23,5 +23,10 @@ service MusicanService @(path: '/musican' ) {
 
   @readonly : true
   entity GenreView as projection on db.GenreView;
+
+  @readonly : true
+  entity InstrumentView as projection on db.InstrumentView;
+    
+  
 
 };

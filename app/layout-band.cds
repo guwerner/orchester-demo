@@ -26,55 +26,14 @@ annotate BandService.Band with @(UI: {
         }
     ]
 });
-////////////////////////////////////////////////////////////////////////////
-//
-//	Musican List Page
-//
-annotate BandService.Musican with @(
-    
-    UI: {
-       HeaderInfo         : {
-        $Type         : 'UI.HeaderInfoType',
-        TypeName      : '{i18n>Musican}',
-        TypeNamePlural: '{i18n>Musicans}',
-        Title         : {Value: prename},
-        Description   : {Value: musicanID}
-    },
-    PresentationVariant: {
-        Visualizations: ['@UI.LineItem'],
-        SortOrder     : [{
-            $Type     : 'Common.SortOrderTyp',
-            property  : musicanID,
-            Descending: false
-        }]
-    },
-    SelectionFields    : [
-        prename,
-        name
-    ],
-    LineItem           : [
-        {
-            Value: musicanID,
-            Label : '{i18n>ID}'
-        },
-        {
-            Value: name,
-            Label: '{i18n>LastName}'
-        },
-        {
-            Value: prename,
-            Label: '{i18n>FirstName}'
-        },
-        {
-            Value: musicanStatus.name,
-            Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
-            Label: '{i18n>status}'
-        },
-        {
-            Value: birthdate,
-            Label: '{i18n>birthdate}'
-        }
-    ],
+
+
+// ////////////////////////////////////////////////////////////////////////////
+// //
+// //	Band Object Page
+// //
+annotate BandService.Band with @(UI: {
+
     Facets             : [
         {
             $Type : 'UI.ReferenceFacet',
@@ -83,10 +42,79 @@ annotate BandService.Musican with @(
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>Admin}',
-            ID:   'MusicanList',
-            Target: '@UI.PresentationVariant',
-        }
+            Label : '{i18n>MusicansInBand}',
+            Target: 'to_musican/@UI.LineItem'
+        },
+
+    ],
+    FieldGroup #General: {Data: [
+        {Value: bandName},
+        {Value: genre},
+        {Value: foundedIn},
+    ]},
+ });
+
+////////////////////////////////////////////////////////////////////////////
+//
+//	Musican List Page
+//
+// annotate BandService.Musican with @(
+    
+//     UI: {
+//        HeaderInfo         : {
+//         $Type         : 'UI.HeaderInfoType',
+//         TypeName      : '{i18n>Musican}',
+//         TypeNamePlural: '{i18n>Musicans}',
+//         Title         : {Value: prename},
+//         Description   : {Value: musicanID}
+//     },
+//     PresentationVariant: {
+//         Visualizations: ['@UI.LineItem'],
+//         SortOrder     : [{
+//             $Type     : 'Common.SortOrderTyp',
+//             property  : musicanID,
+//             Descending: false
+//         }]
+//     },
+//     SelectionFields    : [
+//         prename,
+//         name
+//     ],
+//     LineItem           : [
+//         {
+//             Value: musicanID,
+//             Label : '{i18n>ID}'
+//         },
+//         {
+//             Value: name,
+//             Label: '{i18n>LastName}'
+//         },
+//         {
+//             Value: prename,
+//             Label: '{i18n>FirstName}'
+//         },
+//         {
+//             Value: musicanStatus.name,
+//             Criticality : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code =#Active ? 3 :0)),
+//             Label: '{i18n>status}'
+//         },
+//         {
+//             Value: birthdate,
+//             Label: '{i18n>birthdate}'
+//         }
+//     ],
+//     Facets             : [
+//         {
+//             $Type : 'UI.ReferenceFacet',
+//             Label : '{i18n>General}',
+//             Target: '@UI.FieldGroup#General'
+//         },
+//         {
+//             $Type : 'UI.ReferenceFacet',
+//             Label : '{i18n>Admin}',
+//             ID:   'MusicanList',
+//             Target: '@UI.PresentationVariant',
+//         }
        
-    ]
-});
+//     ]
+// });

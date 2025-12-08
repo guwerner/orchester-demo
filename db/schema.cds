@@ -89,3 +89,8 @@ define View GenreView as
 select from Band distinct {
     key genre 
 }
+
+define View InstrumentView as
+select from Musican distinct {
+    key instrument
+}

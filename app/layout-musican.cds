@@ -16,7 +16,7 @@ annotate MusicanService.Musican with @(UI : {
             Action: 'MusiancService.statusInactive',
             Label : '{i18n>statusInactive}'
         },
-         {
+        {
             $Type : 'UI.DataFieldForAction',
             Action: 'MusiancService.setAbilityUp',
             Label : '{i18n>abilityUp}'
@@ -24,7 +24,7 @@ annotate MusicanService.Musican with @(UI : {
         {
             $Type : 'UI.DataFieldForAction',
             Action: 'MusiancService.setAbilityDown',
-            Label : '{i18n>abilitydown}'
+            Label : '{i18n>abilityDown}'
         }
     ],
     SelectionFields: [
@@ -45,7 +45,7 @@ annotate MusicanService.Musican with @(UI : {
             Action: 'MusiancService.statusInactive',
             Label : '{i18n>statusInactive}'
         },
-         {
+        {
             $Type : 'UI.DataFieldForAction',
             Action: 'MusiancService.setAbilityUp',
             Label : '{i18n>abilityUp}'
@@ -85,12 +85,12 @@ annotate MusicanService.Musican with @(UI : {
             ![@UI.Importance] : #High,
             @HTML5.CssDefaults: {width: '9em'}
         },
-         {
+        {
             Value             : musicanAbility_code,
             Label             : '{i18n>ability}',
             ![@UI.Importance] : #High,
-            @HTML5.CssDefaults: {width: '2em'},
-            ![@UI.Hidden]    : false
+            @HTML5.CssDefaults: {width: '3em'},
+            ![@UI.Hidden]     : false
         },
         {
             Value             : birthdate,
@@ -138,7 +138,20 @@ annotate MusicanService.Musican with @(UI : {
             Target: 'to_band/@UI.LineItem'
         }
     ],
-
+    // funktioniert so nicht, kein Bezug auf ein Feld!??!?
+    QuickViewFacets    : [
+        {
+            $Type        : 'UI.ReferenceFacet',
+            Label        : 'Admin',
+            Target       : '@name',
+            ![@UI.Hidden]: false
+        },
+        {
+            $Type        : 'UI.ReferenceFacet',
+            Label        : '{i18n>Admin}',
+            Target       : '@UI.FieldGroup#Admin',
+        }
+    ],
     FieldGroup #General: {Data: [
         {Value: name},
         {Value: prename},
@@ -160,55 +173,22 @@ annotate MusicanService.Musican with @(UI : {
         Value                  : musicanStatus.name,
         Criticality            : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code = #Active ? 3 : 0)),
         ![@Common.FieldControl]: #ReadOnly,
-    }]}
+    }]},
+
+    FieldGroup #Admin  : {Data: [
+
+        {
+            $Type: 'UI.DataField',
+            Value                  : createdAt,
+            ![@Common.FieldControl]: #ReadOnly
+        },
+        {
+            $Type: 'UI.DataField',
+            Value                  : createdby,
+            ![@Common.FieldControl]: #ReadOnly
+        }
+
+    ]},
 
 
 });
-
-
-annotate MusicanService.Band with @(UI: {
-    HeaderInfo         : {
-        $Type         : 'UI.HeaderInfoType',
-        TypeName      : 'i18n>Band',
-        TypeNamePlural: 'i18n>Bands',
-        Title         : {Value: bandName}
-    },
-    PresentationVariant: {
-        Visualizations: ['@UI.LineItem'],
-        SortOrder     : [{
-            $Type     : 'Common.SortOrderTyp',
-            property  : bandID,
-            Descending: false
-        }]
-
-    },
-    LineItem           : [
-        {
-            Value: bandID,
-            Label: '{i18n>bandID}'
-        },
-        {
-            Value: bandName,
-            Label: '{i18n>bandName}'
-        },
-        {
-            Value: genre,
-            Label: '{i18n>genre}'
-        }
-    ],
-    Facets             : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>General}',
-            Target: '@UI.FieldGroup#General'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID    : 'BandList',
-            Target: '@UI.PresentationVariant',
-            Label : '{i18n>Bands}'
-        }
-
-
-    ],
-})

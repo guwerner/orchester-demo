@@ -1,7 +1,5 @@
 using MusicanService from '../../srv/musican-service';
 
-
-
 annotate MusicanService.Band2Musicans with @(
     // ---------------------------------------------------------------------------
     // List Report
@@ -9,20 +7,24 @@ annotate MusicanService.Band2Musicans with @(
     // Band List
     UI       : {
         LineItem           : [
-
+            
             {
+                $Type: 'UI.DataField',
                 Value: to_band.bandID,
                 Label: '{i18n>bandID}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_band.bandName,
                 Label: '{i18n>bandName}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_band.genre,
                 Label: '{i18n>genre}'
             },
             {
+                $Type: 'UI.DataField',
                 Value: to_band.foundedIn,
                 Label: '{i18n>foundedIn}'
             }
@@ -50,26 +52,29 @@ annotate MusicanService.Band2Musicans with @(
             },
             TypeName      : '{i18n>Musican}',
             TypeNamePlural: '{i18n>Musicans}',
-            Description   : {Value: to_musican.prename}
+            Description   : {Value: to_band.bandName}
         },
         FieldGroup #Description: {Data: [
             {
-                $Type: 'UI.DataField',
-                Value: to_band.bandID,
+                $Type            : 'UI.DataField',
+                Value            : to_band_bandID,
             },
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.bandName,
+                ![@Common.FieldControl] : #ReadOnly,
                 ![@UI.Importance]: #High
             },
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.genre,
+                  ![@Common.FieldControl] : #ReadOnly,
                 ![@UI.Importance]: #High
             },
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.foundedIn,
+                  ![@Common.FieldControl] : #ReadOnly,
                 ![@UI.Importance]: #High
             }
         ]}
