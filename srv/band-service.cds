@@ -8,10 +8,17 @@ service BandService @(path: '/band') {
    
 
   entity Band           as projection on db.Band;
-  entity Concert        as projection on db.Concert;
    entity Band2Musicans    as projection on db.Band2Musicans {
         * , to_musican : redirected to  Musican, to_band  : redirected to Band
   };
+
+  entity Concert        as projection on db.Concert;
+  
+  entity Band2Concerts as Projection on db.Band2Concerts {
+    *, to_concert: redirected to Concert, to_band: redirected to Band
+  }
+
+  
   entity InstrumentType as projection on db.InstrumentType;
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;

@@ -57,7 +57,7 @@ annotate MusicanService.Band2Musicans with @(
         FieldGroup #Description: {Data: [
             {
                 $Type            : 'UI.DataField',
-                Value            : to_band_bandID,
+                Value            : (to_band.bandID),
             },
             {
                 $Type            : 'UI.DataField',
@@ -90,5 +90,61 @@ annotate MusicanService.Band2Musicans with @(
             Target: '@UI.FieldGroup#Description'
 
         }]
-    }]
+    },
+     {  // Concert list
+    $Type  : 'UI.ReferenceFacet',
+    ID     : 'ConcertList',
+    Target : 'to_band/to_concert/@UI.PresentationVariant',
+    Label  : '{i18n>Concerts}'
+  }
+    ]
+);
+
+annotate MusicanService.Band2Concerts with @(
+    // ---------------------------------------------------------------------------
+    // List Report
+    // ---------------------------------------------------------------------------
+    // Concert List
+    UI       : {
+        LineItem           : [
+            
+            {
+                $Type: 'UI.DataField',
+                Value: to_concert.concertID,
+                Label: '{i18n>bandID}'
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: to_concert.location,
+                Label: '{i18n>location}'
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: to_concert.title,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: to_concert.concertDate,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: to_concert.time,
+            },
+             {
+                $Type: 'UI.DataField',
+                Value: to_concert.inlettime
+            },{
+                $Type: 'UI.DataField',
+                Value: to_concert.actual
+            }
+        ],
+        PresentationVariant: {
+            Visualizations: ['@UI.LineItem'],
+            SortOrder     : [{
+                $Type     : 'Common.SortOrderType',
+                Property  : 'to_concert.title',
+                Descending: false
+            }]
+        }
+    }
 );

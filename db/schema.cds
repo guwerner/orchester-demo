@@ -5,20 +5,22 @@ namespace orchester;
 
 entity Band : managed {
     key bandID     : UUID;
-        bandName   : String(50) @title: '{i18n>Band}';
-        genre      : String(20) @title: '{i18n>Genre}';
-        foundedIn  : Date       @title: '{i18n>FoundedIn}';
+        bandName   : String(50);
+        genre      : String(20);
+        foundedIn  : Date;
         to_musican : Composition of many Band2Musicans
                          on to_musican.to_band = $self;
+        to_concert : Composition of many Band2Concerts
+                        on to_concert.to_band = $self;                    
 };
 
 @odata.draft.enabled
 entity Musican : managed {
     key musicanID     : UUID;
-        name          : String(20)                    @title: '{i18n>LastName}';
-        prename       : String(25)                    @title: '{i18n>FirstName}';
-        instrument    : String(20)                    @title: '{i18n>Instruments}';
-        birthdate     : Date                          @title: '{i18n>Birthdate}';
+        name          : String(20);                  
+        prename       : String(25);                  
+        instrument    : String(20);                  
+        birthdate     : Date;                        
         musicanStatus : Association to MusicanStatus  default 'I'    @readonly ; 
         to_band       : Composition of many Band2Musicans
                             on to_band.to_musican = $self;
@@ -42,11 +44,19 @@ entity Band2Musicans : cuid {
 entity Concert : managed {
     key concertID : UUID;
         title     : String(50);
-        date      : Date;
+        concertDate      : Date;
+        time      : Time;
+        inlettime : Time;
         location  : String(50);
-        to_band   : Association to Band;
+        to_band   : Composition of many Band2Concerts
+                    on to_band.to_concert = $self;
+virtual actual    : Boolean;            
 };
 
+entity Band2Concerts : cuid {
+    to_band: Association to Band;
+    to_concert: Association to Concert
+}
 //
 //  Code Lists
 //

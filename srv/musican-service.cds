@@ -20,6 +20,7 @@ service MusicanService @(path: '/musican' ) {
   entity Stage          as projection on db.Stage;
   entity MusicanStatus  as projection on db.MusicanStatus;
   entity MusicanAblitity as projection on db.MusicanAblitity;
+  entity Band2Concerts as  projection on db.Band2Concerts;
 
   @readonly : true
   entity GenreView as projection on db.GenreView;

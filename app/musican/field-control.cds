@@ -61,6 +61,8 @@ annotate MusicanService.Musican with {
 annotate MusicanService.Band2Musicans with {
     ID         @Core.Computed;
     to_band    @Common.ValueList: {
+        @Common.Text                    : to_band.bandName,
+        @Common.TextArrangement         : #TextOnly,
         CollectionPath: 'Band',
         Label         : '',
         Parameters    : [

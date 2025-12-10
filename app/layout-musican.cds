@@ -72,25 +72,16 @@ annotate MusicanService.Musican with @(UI : {
             ![@UI.Importance] : #High
         },
         {
-            Value             : musicanStatus.name,
+            Value             : (musicanStatus.code),
             Criticality       : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code = #Active ? 3 : 0)),
             @HTML5.CssDefaults: {width: '9em'},
-            Label             : '{i18n>status}',
             ![@UI.Importance] : #High
 
         },
         {
-            Value             : musicanAbility.name,
-            Label             : '{i18n>ability}',
+            Value             : (musicanAbility.code),
             ![@UI.Importance] : #High,
             @HTML5.CssDefaults: {width: '9em'}
-        },
-        {
-            Value             : musicanAbility_code,
-            Label             : '{i18n>ability}',
-            ![@UI.Importance] : #High,
-            @HTML5.CssDefaults: {width: '3em'},
-            ![@UI.Hidden]     : false
         },
         {
             Value             : birthdate,
