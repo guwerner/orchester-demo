@@ -1,0 +1,13 @@
+{
+  "name": "concert",
+  "version": "1.0.0",
+  "description": "Concert Management App",
+  "scripts": {
+    "dev": "ui5 serve",
+    "build": "ui5 build --dest dist",
+    "test": "ui5 run"
+  },
+  "devDependencies": {
+    "@sap/ui5-builder": "^3.0.0"
+  }
+}

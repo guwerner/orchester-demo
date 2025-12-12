@@ -17,14 +17,15 @@ entity Band : managed {
 @odata.draft.enabled
 entity Musican : managed {
     key musicanID     : UUID;
-        name          : String(20);                  
+        name          : String(20) @Common : {SemanticKey : [name]};                  
         prename       : String(25);                  
         instrument    : String(20);                  
         birthdate     : Date;                        
         musicanStatus : Association to MusicanStatus  default 'I'    @readonly ; 
         to_band       : Composition of many Band2Musicans
                             on to_band.to_musican = $self;
-        musicanAbility : Association to MusicanAblitity  default 1    @readonly ;                          
+        musicanAbility : Association to MusicanAblitity  default 1    @readonly ;
+        address       : Association to Address;                          
                      
 };
 
@@ -41,6 +42,7 @@ entity Band2Musicans : cuid {
         description : String(255);
 };
 
+@odata.draft.enabled
 entity Concert : managed {
     key concertID : UUID;
         title     : String(50);
@@ -56,6 +58,15 @@ virtual actual    : Boolean;
 entity Band2Concerts : cuid {
     to_band: Association to Band;
     to_concert: Association to Concert
+}
+
+entity Address : cuid, managed {
+        addressID   : Integer; 
+        street      : String(30);
+        houseNumber : String(5);
+        city        : String(30);
+        postalCode  : String(7);
+        country    : String(20);
 }
 //
 //  Code Lists

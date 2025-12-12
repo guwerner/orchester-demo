@@ -1,0 +1,21 @@
+ID;addressID;street;city;postalCode;country;houseNumber
+a1b2c3d4-1111-1111-1111-111111111111;1;Beethovenstraße 12;Vienna;1010;Austria;1
+a1b2c3d4-2222-2222-2222-222222222222;2;Mozart Allee 45;Salzburg;5020;Austria;223
+a1b2c3d4-3333-3333-3333-333333333333;3;Brahmsweg 7;Berlin;10115;Germany;12
+a1b2c3d4-4444-4444-4444-444444444444;4;Schubertplatz 23;Munich;80331;Germany;35
+a1b2c3d4-5555-5555-5555-555555555555;5;Wagnerstraße 89;Hamburg;20095;Germany;56
+a1b2c3d4-6666-6666-6666-666666666666;6;Chopin Street 34;Paris;75001;France;4
+a1b2c3d4-7777-7777-7777-777777777777;7;Vivaldi Road 56;London;SW1A 1AA;United Kingdom;32
+a1b2c3d4-8888-8888-8888-888888888888;8;Bach Avenue 78;Leipzig;04103;Germany;45
+a1b2c3d4-9999-9999-9999-999999999999;9;Haydn Lane 15;Eisenstadt;7000;Austria;34
+a1b2c3d4-aaaa-aaaa-aaaa-aaaaaaaaaaaa;10;Liszt Boulevard 90;Budapest;1061;Hungary;34
+a1b2c3d4-bbbb-bbbb-bbbb-bbbbbbbbbbbb;11;Mahlerweg 42;Prague;11000;Czech Republic;34
+a1b2c3d4-cccc-cccc-cccc-cccccccccccc;12;Strauss Ring 28;Dresden;01067;Germany;58
+a1b2c3d4-dddd-dddd-dddd-dddddddddddd;13;Verdi Plaza 63;Milan;20121;Italy;98
+a1b2c3d4-eeee-eeee-eeee-eeeeeeeeeeee;14;Puccini Street 51;Rome;00186;Italy;34
+a1b2c3d4-ffff-ffff-ffff-ffffffffffff;15;Debussy Avenue 17;Brussels;1000;Belgium;38    
+a1b2c3d4-1234-5678-9abc-def012345678;16;Tchaikovsky Street 88;Moscow;101000;Russia;84
+a1b2c3d4-abcd-efab-cdef-abcdef123456;17;Stravinsky Lane 29;Zurich;8001;Switzerland;678
+a1b2c3d4-9876-5432-1fed-cba987654321;18;Ravel Road 44;Amsterdam;1012;Netherlands;23
+a1b2c3d4-4321-8765-dcba-fedcba987654;19;Sibelius Way 66;Helsinki;00100;Finland;323
+a1b2c3d4-5678-1234-abcd-ef9876543210;20;Grieg Street 22;Oslo;0150;Norway;99

@@ -16,7 +16,8 @@ annotate MusicanService.Band2Musicans with @(
             {
                 $Type: 'UI.DataField',
                 Value: to_band.bandName,
-                Label: '{i18n>bandName}'
+                Label: '{i18n>bandName}',
+                ![@HTML5.LinkTarget]: '_blank',
             },
             {
                 $Type: 'UI.DataField',
@@ -62,19 +63,17 @@ annotate MusicanService.Band2Musicans with @(
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.bandName,
-                ![@Common.FieldControl] : #ReadOnly,
+                
                 ![@UI.Importance]: #High
             },
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.genre,
-                  ![@Common.FieldControl] : #ReadOnly,
                 ![@UI.Importance]: #High
             },
             {
                 $Type            : 'UI.DataField',
                 Value            : to_band.foundedIn,
-                  ![@Common.FieldControl] : #ReadOnly,
                 ![@UI.Importance]: #High
             }
         ]}
@@ -148,3 +147,80 @@ annotate MusicanService.Band2Concerts with @(
         }
     }
 );
+
+annotate MusicanService.Address with @(UI: {
+Identification: [{
+        $Type: 'UI.DataField',
+        Value: street
+
+    }] ,
+
+LineItem  : [     
+    {
+        $Type: 'UI.DataField',
+        Value: street,
+        Label: '{i18n>street}'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: city,
+        Label: '{i18n>city}'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: postalCode,
+        Label: '{i18n>postalCode}'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: country,
+        Label: '{i18n>country}'
+    }
+], HeaderInfo  : {
+    $Type : 'UI.HeaderInfoType',
+    TypeName : '{i18n>Address}',
+    TypeNamePlural : '{i18n>Addresses}',
+    Title : {
+        $Type: 'UI.DataField',
+        Value: city
+    }
+},
+Facets  : [
+    {
+      $Type : 'UI.ReferenceFacet',
+       Label : '{i18n>Details}',
+      Target: '@UI.FieldGroup#Details'
+    }
+],
+ FieldGroup #Details        : {Data: [
+        {Value: city},
+        {Value: street},
+        {Value: country},
+        
+    ]},
+
+     QuickViewFacets            : [{
+        $Type : 'UI.ReferenceFacet',
+        Label : '{i18n>Address}',
+        Target: '@UI.FieldGroup#AdressQuickView'
+    }],
+
+    FieldGroup #AdressQuickView: {Data: [
+        {
+            $Type: 'UI.DataField',
+            Value: postalCode
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: city
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: (street),
+        },
+        {
+             $Type: 'UI.DataField',
+             Value: country
+        }
+    ]}
+}) ;

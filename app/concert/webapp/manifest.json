@@ -1,0 +1,137 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "concert",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "type": "application",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "i18n": "i18n/i18n.properties",
+    "dataSources": {
+      "MainService": {
+        "uri": "musican/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Concert-manage": {
+          "signature": {
+            "parameters": {
+              "Concert.concertID": {
+                "renameTo": "ID"
+              }
+            },
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Concert",
+          "action": "manage",
+          "title": "{{appTitle}}",
+          "icon": "sap-icon://event",
+          "indicatorDataSource": {
+            "dataSource": "MusicanService",
+            "path": "Concert/$count",
+            "refresh": 1800
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": false,
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.140.0",
+      "libs": {
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "": {
+        "dataSource": "MainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupProperties": {
+            "default": {
+              "submit": "Auto"
+            }
+          }
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ConcertList",
+          "target": "ConcertList"
+        },
+        {
+          "pattern": "Concert({key}):?query:",
+          "name": "ConcertDetails",
+          "target": "ConcertDetails"
+        }
+      ],
+      "targets": {
+        "ConcertList": {
+          "type": "Component",
+          "id": "ConcertList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Concert",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "useSemanticDateRange": true
+                }
+              },
+              "variantManagement": "Page",
+              "initialLoad": "Enabled",
+              "navigation": {
+                "Concert": {
+                  "detail": {
+                    "route": "ConcertDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ConcertDetails": {
+          "type": "Component",
+          "id": "ConcertDetails",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Concert"
+            }
+          }
+        }
+
+      }
+    }
+  },
+  "sap.platform.hcp": {
+    "uri": ""
+  }
+}

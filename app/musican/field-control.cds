@@ -68,16 +68,23 @@ annotate MusicanService.Band2Musicans with {
         Parameters    : [
             {
                 $Type            : 'Common.ValueListParameterInOut',
-                LocalDataProperty: 'to_band_bandID',
+                LocalDataProperty: to_band_bandID,
                 ValueListProperty: 'bandID'
             },
             {
-                $Type            : 'Common.ValueListParameterDisplayOnly',
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: to_band_bandName,
                 ValueListProperty: 'bandName'
             },
             {
-                $Type            : 'Common.ValueListParameterDisplayOnly',
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: to_band_genre,
                 ValueListProperty: 'genre'
+            },
+            {
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: to_band_foundedIn,
+                ValueListProperty: 'foundedIn'
             }
         ]
     };
@@ -135,25 +142,37 @@ annotate MusicanService.Band with @(
         }
     );
     bandName @(
-        Common.ValueListWithFixedValues: false,
+        title                          : '{i18n>Orchester}',
         Common.ValueList               : {
             CollectionPath                 : 'Band',
-            Common.ValueListWithFixedValues: false,
             Label                          : 'Band ID',
             Parameters                     : [
                 {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    LocalDataProperty: bandID,
+                    ValueListProperty: 'bandID'
+                },
+                {
                     $Type            : 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'bandName',
+                    LocalDataProperty: bandName,
                     ValueListProperty: 'bandName'
                 },
                 {
-                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    $Type            : 'Common.ValueListParameterInOut',
+                    LocalDataProperty: genre,
                     ValueListProperty: 'genre'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterInOut',
+                    LocalDataProperty: foundedIn,
+                    ValueListProperty: 'foundedIn'
                 }
             ]
         }
     )
 };
+
+
 
 annotate MusicanService.Musican with {
     musicanID @(
@@ -161,6 +180,8 @@ annotate MusicanService.Musican with {
         Common.Text            : name,
         Common.TextArrangement : #TextOnly
     );
+//    @Common.SemanticObject : 'name'
+     
     name @(
         title                           : '{i18n>Name}',
         Common.ValueListWithFixedValues : false,
@@ -168,7 +189,7 @@ annotate MusicanService.Musican with {
             CollectionPath : 'Musican',
             Parameters     : [{
                 $Type             : 'Common.ValueListParameterInOut',
-                LocalDataProperty : 'name',
+                LocalDataProperty : name,
                 ValueListProperty : 'name'
             }]
         }
@@ -187,4 +208,15 @@ annotate MusicanService.Musican with {
             }]
         }
     )
+};
+
+annotate MusicanService.Address with {
+    ID  @(
+        title : '{i18n>Address}',
+        Common: {
+            Text           : city,
+            TextArrangement: #TextOnly
+        }
+    )  @UI.HiddenFilter;
+    addressID @title: '{i18n>AddressID}'
 };

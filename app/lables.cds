@@ -24,13 +24,20 @@ annotate schema.Band with @title: '{i18n>Band}' {
 
 annotate schema.Concert with @title: '{i18n>Concert}' {
     concertID @UI.Hidden;
-    title     @title               : '{i18n>ConcertName}';
-    concertDate      @title               : '{i18n>ConcertDate}';
-    time      @title               : '{i18n>ConcertTime}';
-    inlettime @title               : '{i18n>ConcertInlet}';
+    title     @title               : '{i18n>concertName}';
+    concertDate      @title        :'{i18n>concertDate}';
+    time      @title               : '{i18n>concertTime}';
+    inlettime @title               : '{i18n>inletTime}';
     location  @title               : '{i18n>location}';
-    actual    @title : '{i18n>Actual}'
-
-
+    actual    @title : '{i18n>actual}'
 
 };
+
+annotate schema.Address with @title: '{i18n>Address}' {
+    addressID  @title : '{i18n>addressID}';
+    street     @title : '{i18n>street}';
+    city       @title : '{i18n>city}';
+    postalCode @title : '{i18n>postalCode}';
+    country    @title : '{i18n>country}'
+};
+

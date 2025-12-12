@@ -4,9 +4,13 @@ service MusicanService @(path: '/musican' ) {
 
 
   entity Musican as projection on db.Musican actions {
+    @Common.IsActionCritical : true
     action statusActive();
+    @Common.IsActionCritical : true
     action statusInactive();
+    @Common.IsActionCritical : true
     action setAbilityUp();
+    @Common.IsActionCritical : true
     action setAbilityDown();
     }
 
@@ -21,6 +25,7 @@ service MusicanService @(path: '/musican' ) {
   entity MusicanStatus  as projection on db.MusicanStatus;
   entity MusicanAblitity as projection on db.MusicanAblitity;
   entity Band2Concerts as  projection on db.Band2Concerts;
+  entity Address as projection on db.Address;
 
   @readonly : true
   entity GenreView as projection on db.GenreView;

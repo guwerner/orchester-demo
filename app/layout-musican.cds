@@ -5,6 +5,7 @@ using MusicanService from '../srv/musican-service';
 //	Musican List Page
 //
 annotate MusicanService.Musican with @(UI : {
+     
     Identification : [
         {
             $Type : 'UI.DataFieldForAction',
@@ -25,8 +26,17 @@ annotate MusicanService.Musican with @(UI : {
             $Type : 'UI.DataFieldForAction',
             Action: 'MusiancService.setAbilityDown',
             Label : '{i18n>abilityDown}'
-        }
+        },
+        {Value: name},
     ],
+    HeaderInfo     : {
+        Title         : {
+            $Type: 'UI.DataField',
+            Value: name
+        },
+        TypeName      : '{i18n>Musican}',
+        TypeNamePlural: '{i18n>Musicans}'
+    },
     SelectionFields: [
         prename,
         name,
@@ -41,9 +51,10 @@ annotate MusicanService.Musican with @(UI : {
             Label : '{i18n>statusActive}'
         },
         {
-            $Type : 'UI.DataFieldForAction',
-            Action: 'MusiancService.statusInactive',
-            Label : '{i18n>statusInactive}'
+            $Type  : 'UI.DataFieldForAction',
+            Action : 'MusiancService.statusInactive',
+            Label  : '{i18n>statusInactive}',
+            IconUrl: 'sap-icon://survey'
         },
         {
             $Type : 'UI.DataFieldForAction',
@@ -55,19 +66,19 @@ annotate MusicanService.Musican with @(UI : {
             Action: 'MusiancService.setAbilityDown',
             Label : '{i18n>abilityDown}'
         },
+        {Value: musicanID},
         {
-            Value             : name,
-            Label             : '{i18n>name}',
-            @HTML5.CssDefaults: {width: '9em'}
+            Value               : name,
+            ![@HTML5.LinkTarget]: '_blank',
+            @HTML5.CssDefaults  : {width: '9em'},
+
         },
         {
             Value             : prename,
-            Label             : '{i18n>prename}',
             @HTML5.CssDefaults: {width: '9em'}
         },
         {
             Value             : instrument,
-            Label             : '{i18n>instrument}',
             @HTML5.CssDefaults: {width: '10em'},
             ![@UI.Importance] : #High
         },
@@ -85,8 +96,10 @@ annotate MusicanService.Musican with @(UI : {
         },
         {
             Value             : birthdate,
-            Label             : '{i18n>birthdate}',
             @HTML5.CssDefaults: {width: '9em'},
+        },
+        {Value: address.ID,
+        @HTML5.CssDefaults: {width: '9em'}
         }
 
     ]
@@ -122,27 +135,43 @@ annotate MusicanService.Musican with @(UI : {
                     Target: '@UI.FieldGroup#Ability'
                 },
             ]
+
         },
         {
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>BandInMusican}',
             Target: 'to_band/@UI.LineItem'
-        }
-    ],
-    // funktioniert so nicht, kein Bezug auf ein Feld!??!?
-    QuickViewFacets    : [
-        {
-            $Type        : 'UI.ReferenceFacet',
-            Label        : 'Admin',
-            Target       : '@name',
-            ![@UI.Hidden]: false
         },
         {
-            $Type        : 'UI.ReferenceFacet',
-            Label        : '{i18n>Admin}',
-            Target       : '@UI.FieldGroup#Admin',
+            $Type : 'UI.ReferenceFacet',
+            Label : '{i18n>Admin}',
+            Target: '@UI.FieldGroup#Admin'
         }
     ],
+    FieldGroup #Admin  : {Data: [
+        {
+            $Type                  : 'UI.DataField',
+            Value                  : createdAt,
+            ![@Common.FieldControl]: #ReadOnly
+
+        },
+        {
+            $Type                  : 'UI.DataField',
+            Value                  : createdBy,
+            ![@Common.FieldControl]: #ReadOnly
+        },
+        {
+            $Type                  : 'UI.DataField',
+            Value                  : modifiedAt,
+            ![@Common.FieldControl]: #ReadOnly
+        },
+        {
+            $Type                  : 'UI.DataField',
+            Value                  : modifiedBy,
+            ![@Common.FieldControl]: #ReadOnly
+        }
+    ]},
+
     FieldGroup #General: {Data: [
         {Value: name},
         {Value: prename},
@@ -164,22 +193,7 @@ annotate MusicanService.Musican with @(UI : {
         Value                  : musicanStatus.name,
         Criticality            : (musicanStatus.code = #Inactive ? 2 : (musicanStatus.code = #Active ? 3 : 0)),
         ![@Common.FieldControl]: #ReadOnly,
-    }]},
-
-    FieldGroup #Admin  : {Data: [
-
-        {
-            $Type: 'UI.DataField',
-            Value                  : createdAt,
-            ![@Common.FieldControl]: #ReadOnly
-        },
-        {
-            $Type: 'UI.DataField',
-            Value                  : createdby,
-            ![@Common.FieldControl]: #ReadOnly
-        }
-
-    ]},
-
-
+    }]}
 });
+
+

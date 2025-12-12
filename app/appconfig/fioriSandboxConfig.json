@@ -46,11 +46,11 @@
                   }
                 },
                 {
-                  "id": "ManageInstrumentAdmin",
+                  "id": "ManageConcertsAdmin",
                   "tileType": "sap.ushell.ui.tile.StaticTile",
                   "properties": {
-                    "title": "Manage Instrument Type",
-                    "targetURL": "#Instrument-manage"
+                    "title": "Manage Concerts",
+                    "targetURL": "#Concert-manage"
                   }
                 }
               ]
@@ -96,18 +96,18 @@
                 "url": "band/webapp"
               }
             },
-            "ManageInstrument": {
-              "semanticObject": "Instrument",
+            "ManageConcert": {
+              "semanticObject": "Concert",
               "action": "manage",
-              "title": "Manage Instrument Type",
+              "title": "Manage Concert",
               "signature": {
                 "parameters": {},
                 "additionalParameters": "allowed"
               },
               "resolutionResult": {
                 "applicationType": "SAPUI5",
-                "additionalInformation": "SAPUI5.Component=instrument",
-                "url": "instrument/webapp"
+                "additionalInformation": "SAPUI5.Component=concert",
+                "url": "concert/webapp"
               }
             }
           }
