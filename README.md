@@ -1,6 +1,25 @@
-# Getting Started
+# Orchester Demo App
 
-Welcome to your new project.
+Welcome to the project Orchester Demo.
+This Sample App shows the posibility of the SAP CAP framework. It is developed with Fiori-Elements and TypeScript.
+The database is sqlite at the moment. It runs only as local app. 
+
+## Minimum requirement
++ Node.js v22.21.1
++ npm 10.9.4
+   
+## Setup 
+To setup the app on the local machine
+```
+git clone https://github.com/guwerner/orchester-demo
+cd orchester-demo
+npm install
+```
+
+## Run
+```
+ cds watch
+```
 
 It contains these folders and files, following our recommended project layout:
 
@@ -12,14 +31,5 @@ File or Folder | Purpose
 `package.json` | project metadata and configuration
 `readme.md` | this getting started guide
 
-
-## Next Steps
-
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-
 ## Learn More
-
 Learn more at https://cap.cloud.sap/docs/get-started/.
