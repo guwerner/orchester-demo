@@ -100,8 +100,20 @@ annotate MusicanService.Musican with @(UI : {
         },
         {Value: address.ID,
         @HTML5.CssDefaults: {width: '9em'}
-        }
-
+        },   
+        //      {        
+        //     $Type               : 'UI.DataFieldWithIntentBasedNavigation',
+        //     Value               : address.ID,
+        //     Label               : 'V2 Action for Navigation to Author',
+        //     SemanticObject      : 'Authors',
+        //     Action              : 'displayUI5latest',
+        //     ![@HTML5.LinkTarget]: '_blank',
+        //     Mapping             : [{
+        //         $Type                 : 'Common.SemanticObjectMappingType',
+        //         LocalProperty         : address_ID,
+        //         SemanticObjectProperty: 'ID',
+        //     }]
+        // }
     ]
 
 });

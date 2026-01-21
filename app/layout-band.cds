@@ -52,14 +52,14 @@ annotate BandService.Band with @(UI: {
         {Value: genre},
         {Value: foundedIn},
     ]},
- });
+});
 
 ////////////////////////////////////////////////////////////////////////////
 //
 //	Musican List Page
 //
 // annotate BandService.Musican with @(
-    
+
 //     UI: {
 //        HeaderInfo         : {
 //         $Type         : 'UI.HeaderInfoType',
@@ -115,6 +115,6 @@ annotate BandService.Band with @(UI: {
 //             ID:   'MusicanList',
 //             Target: '@UI.PresentationVariant',
 //         }
-       
+
 //     ]
 // });

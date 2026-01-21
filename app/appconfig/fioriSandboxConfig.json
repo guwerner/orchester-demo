@@ -52,6 +52,14 @@
                     "title": "Manage Concerts",
                     "targetURL": "#Concert-manage"
                   }
+                },
+                {
+                  "id": "ManageAddressAdmin",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Manage Address",
+                    "targetURL": "#Address-manage"
+                  }
                 }
               ]
             }
@@ -108,6 +116,20 @@
                 "applicationType": "SAPUI5",
                 "additionalInformation": "SAPUI5.Component=concert",
                 "url": "concert/webapp"
+              }
+            },
+            "ManageAddress": {
+              "semanticObject": "Address",
+              "action": "manage",
+              "title": "Manage Address",
+              "signature": {
+                "parameters": {},
+                "additionalParameters": "allowed"
+              },
+              "resolutionResult": {
+                "applicationType": "SAPUI5",
+                "additionalInformation": "SAPUI5.Component=address",
+                "url": "address/webapp"
               }
             }
           }

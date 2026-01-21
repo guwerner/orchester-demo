@@ -1,0 +1,141 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "address",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "type": "application",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "i18n": "i18n/i18n.properties",
+    "dataSources": {
+      "MainService": {
+        "uri": "address/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Address-manage": {
+          "signature": {
+            "parameters": {
+              "Address.ID": {
+                "renameTo": "ID"
+              }
+            },
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Address",
+          "action": "manage",
+          "title": "{{appTitle}}",
+          "icon": "sap-icon://home",
+          "indicatorDataSource": {
+            "dataSource": "AddressService",
+            "path": "Address/$count",
+            "refresh": 1800
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": false,
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.140.0",
+      "libs": {
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "": {
+        "dataSource": "MainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupProperties": {
+            "default": {
+              "submit": "Auto"
+            }
+          }
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "AddressList",
+          "target": "AddressList"
+        },
+        {
+          "pattern": "Address({key}):?query:",
+          "name": "AddressDetails",
+          "target": "AddressDetails"
+        }
+      ],
+      "targets": {
+        "AddressList": {
+          "type": "Component",
+          "id": "AddressList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Address",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "useSemanticDateRange": true
+                }
+              },
+              "variantManagement": "Page",
+              "initialLoad": "Enabled",
+              "navigation": {
+                "Address": {
+                  "detail": {
+                    "route": "AddressDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AddressDetails": {
+          "type": "Component",
+          "id": "AddressDetails",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Address",
+              "editableHeaderContent": false
+            }
+          }
+        }
+      },
+      "config": {}
+    }
+  },
+   "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+
+}
+
