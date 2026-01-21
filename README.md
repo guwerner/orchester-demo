@@ -15,8 +15,8 @@ git clone https://github.com/guwerner/orchester-demo
 cd orchester-demo
 npm install
 ```
-
-## Run
+## Run 
+Run the app with
 ```
  cds watch
 ```
@@ -30,6 +30,12 @@ File or Folder | Purpose
 `srv/` | your service models and code go here
 `package.json` | project metadata and configuration
 `readme.md` | this getting started guide
+
+## Unit Test
+Start the unit test
+```
+ npm test
+```
 
 ## Learn More
 Learn more at https://cap.cloud.sap/docs/get-started/.
