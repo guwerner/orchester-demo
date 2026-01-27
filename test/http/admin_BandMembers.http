@@ -1,4 +1,4 @@
-@band = http://localhost:4004/odata/v4/band
+@band = http://localhost:4004/band
 
 ### Get all Band2Musicans (junction table)
 GET {{band}}/Band2Musicans?$top=50

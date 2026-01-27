@@ -1,4 +1,4 @@
-@musican = http://localhost:4004/odata/v4/musican
+@musican = http://localhost:4004/musican
 
 ### Get all Musicans
 GET {{musican}}/Musican?$top=20

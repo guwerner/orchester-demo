@@ -1,15 +1,15 @@
-@admin = http://localhost:4004/odata/v4/admin
+@musican = http://localhost:4004/musican
 
 ### Get all Concerts
-GET {{admin}}/Concert?$top=20
+GET {{musican}}/Concert?$top=20
 Accept: application/json
 
 ### Get Concert by ID
-GET {{admin}}/Concert(550e8400-e29b-41d4-a716-546655440001)
+GET {{musican}}/Concert(550e8400-e29b-41d4-a716-546655440001)
 Accept: application/json
 
 ### Create Concert
-POST {{admin}}/Concert
+POST {{musican}}/Concert
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Update Concert
-PATCH {{admin}}/Concert(550e8400-e29b-41d4-a716-546655440001)
+PATCH {{musican}}/Concert(550e8400-e29b-41d4-a716-546655440001)
 Content-Type: application/json
 
 {
@@ -28,4 +28,4 @@ Content-Type: application/json
 }
 
 ### Delete Concert
-DELETE {{admin}}/Concert(550e8400-e29b-41d4-a716-546655440001)
+DELETE {{musican}}/Concert(550e8400-e29b-41d4-a716-546655440001)

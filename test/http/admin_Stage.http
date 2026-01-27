@@ -1,15 +1,15 @@
-@admin = http://localhost:4004/odata/v4/admin
+@musican = http://localhost:4004/musican
 
 ### Get all Stages
-GET {{admin}}/Stage?$top=20
+GET {{musican}}/Stage?$top=20
 Accept: application/json
 
 ### Get Stage by ID
-GET {{admin}}/Stage(stage-1)
+GET {{musican}}/Stage(stage-1)
 Accept: application/json
 
 ### Create Stage
-POST {{admin}}/Stage
+POST {{musican}}/Stage
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Update Stage
-PATCH {{admin}}/Stage(stage-1)
+PATCH {{musican}}/Stage(stage-1)
 Content-Type: application/json
 
 {
@@ -28,4 +28,4 @@ Content-Type: application/json
 }
 
 ### Delete Stage
-DELETE {{admin}}/Stage(stage-1)
+DELETE {{musican}}/Stage(stage-1)
