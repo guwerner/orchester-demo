@@ -1,6 +1,6 @@
 using orchester as db from '../db/schema';
 
-service MusicanService @(path: '/musican' ) {
+service MusicanService @(path: '/musican', requires: ['Admin', 'BandManager']) {
 
 
   entity Musican as projection on db.Musican actions {

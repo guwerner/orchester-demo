@@ -1,0 +1,31 @@
+{
+  "xsappname": "orchester-demo",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full administrative access to all services"
+    },
+    {
+      "name": "$XSAPPNAME.BandManager",
+      "description": "Full access to all services for band management"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator with full access to all services",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "BandManager",
+      "description": "Band manager with full access to all services",
+      "scope-references": [
+        "$XSAPPNAME.BandManager"
+      ]
+    }
+  ]
+}

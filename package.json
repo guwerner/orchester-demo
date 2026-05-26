@@ -39,6 +39,26 @@
     "log": {
       "service": true
     },
+    "requires": {
+      "auth": {
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "admin": {
+              "password": "admin",
+              "roles": ["Admin", "BandManager"]
+            },
+            "bandmanager": {
+              "password": "bandmanager",
+              "roles": ["BandManager"]
+            }
+          }
+        },
+        "[production]": {
+          "kind": "jwt"
+        }
+      }
+    },
     "fiori": {
       "wrap_multiple_errors": false
     },
